@@ -94,64 +94,35 @@ const OFFER_CONFIG = {
   trackedParams: ["utm_source", "utm_medium", "utm_campaign", "utm_content", "utm_term", "gclid", "fbclid"]
 };
 
-const VISUAL_VARIANTS = [
-  {
-    id: "cercana",
-    label: "Cercana",
-    type: "Foto real",
-    src: "assets/support-real.jpeg",
-    alt: "Amanda Olmo en una sesión cercana de orientación"
-  },
-  {
-    id: "autoridad",
-    label: "Autoridad",
-    type: "Foto real",
-    src: "assets/variant-autoridad-real.jpeg",
-    alt: "Amanda Olmo de pie frente a su escritorio en una imagen de autoridad"
-  },
-  {
-    id: "dinamica",
-    label: "Dinámica",
-    type: "Foto real",
-    src: "assets/variant-dinamica-real.jpeg",
-    alt: "Amanda Olmo atendiendo una llamada y conectando desde su oficina"
-  },
-  {
-    id: "estudio-identidad",
-    label: "Estudio",
-    type: "IA con identidad",
-    src: "assets/variant-estudio-identidad.webp",
-    alt: "Amanda Olmo en un estudio profesional azul y dorado"
-  },
-  {
-    id: "comunidad-identidad",
-    label: "Comunidad",
-    type: "IA con identidad",
-    src: "assets/variant-comunidad-identidad.webp",
-    alt: "Amanda Olmo en un ambiente cercano y luminoso para su comunidad"
-  },
-  {
-    id: "evaluacion-identidad",
-    label: "Evaluación",
-    type: "IA con identidad",
-    src: "assets/variant-evaluacion-identidad.webp",
-    alt: "Amanda Olmo preparada para una evaluación personalizada en su oficina"
-  },
-  {
-    id: "fintech",
-    label: "Fintech",
-    type: "Concepto IA",
-    src: "assets/variant-fintech-ia.webp",
-    alt: "Concepto fintech de Amanda Olmo revisando información financiera"
-  },
-  {
-    id: "credito",
-    label: "Crédito",
-    type: "Concepto IA",
-    src: "assets/variant-credito-ia.webp",
-    alt: "Concepto de Amanda Olmo con tarjetas frente a una computadora"
-  }
-];
+const HERO_MEDIA_CONFIG = {
+  defaultMode: "video",
+  banners: [
+    {
+      id: "dos-caminos",
+      eyebrow: "Dos caminos para avanzar",
+      title: "Dos caminos. Tú eliges cómo avanzar.",
+      body: "Comunidad educativa o evaluación personalizada.",
+      src: "assets/hero-banner-dos-caminos.webp",
+      alt: "Amanda Olmo presenta dos caminos para avanzar con el crédito"
+    },
+    {
+      id: "comunidad",
+      eyebrow: "Comunidad Mandy Academy",
+      title: "Aprende. Conecta. Avanza.",
+      body: "$49.99 al mes · Cancela cuando quieras.",
+      src: "assets/hero-banner-comunidad.webp",
+      alt: "Amanda Olmo en un espacio profesional que representa la Comunidad Mandy Academy"
+    },
+    {
+      id: "evaluacion",
+      eyebrow: "Evaluación personalizada",
+      title: "Claridad para tu caso.",
+      body: "$100 pago único · Incluye evaluación y cotización.",
+      src: "assets/hero-banner-evaluacion.webp",
+      alt: "Amanda Olmo ofrece atención individual durante una evaluación personalizada"
+    }
+  ]
+};
 
 document.addEventListener("DOMContentLoaded", () => {
   renderOffers();
@@ -162,7 +133,7 @@ document.addEventListener("DOMContentLoaded", () => {
   initAccordion();
   initVideoTestimonials();
   initVideoCarousel();
-  initVisualVariants();
+  initHeroMedia();
   initThankYouPage();
 });
 
@@ -282,8 +253,8 @@ function initScrollButtons() {
 
 function initStickyCta() {
   const stickyCta = document.querySelector(".sticky-cta");
-  const primaryCta = document.querySelector(".hero-actions .btn");
-  if (!stickyCta || !primaryCta) return;
+  const heroSection = document.querySelector(".hero-section");
+  if (!stickyCta || !heroSection) return;
 
   if (!("IntersectionObserver" in window)) {
     stickyCta.classList.add("is-visible");
@@ -298,7 +269,7 @@ function initStickyCta() {
     rootMargin: "0px"
   });
 
-  observer.observe(primaryCta);
+  observer.observe(heroSection);
 }
 
 function initAccordion() {
@@ -358,52 +329,81 @@ function initVideoCarousel() {
   nextButton.addEventListener("click", () => scrollByCard(1));
 }
 
-function initVisualVariants() {
-  const target = document.querySelector("[data-visual-target]");
-  const options = document.querySelector("[data-visual-options]");
-  const label = document.querySelector("[data-visual-label]");
-  if (!target || !options || !label) return;
+function initHeroMedia() {
+  const root = document.querySelector("[data-hero-media]");
+  if (!root) return;
 
-  options.innerHTML = VISUAL_VARIANTS.map((variant, index) => `
-    <button class="visual-variant-option" type="button" data-visual-variant="${escapeHtml(variant.id)}" aria-pressed="${index === 0 ? "true" : "false"}">
-      <img src="${escapeHtml(variant.src)}" alt="" width="160" height="100" loading="lazy" decoding="async">
-      <span>
-        <strong>${escapeHtml(variant.label)}</strong>
-        <small>${escapeHtml(variant.type)}</small>
-      </span>
-    </button>
-  `).join("");
+  const modeButtons = Array.from(root.querySelectorAll("[data-media-mode]"));
+  const panels = Array.from(root.querySelectorAll("[data-media-panel]"));
+  const video = root.querySelector("[data-vsl-video]");
+  const bannerViewport = root.querySelector("[data-hero-banner]");
+  const dotsContainer = root.querySelector("[data-hero-banner-dots]");
+  const prevButton = root.querySelector("[data-hero-banner-prev]");
+  const nextButton = root.querySelector("[data-hero-banner-next]");
+  if (!modeButtons.length || !panels.length || !bannerViewport || !dotsContainer) return;
 
-  const selectVariant = id => {
-    const selected = VISUAL_VARIANTS.find(variant => variant.id === id) || VISUAL_VARIANTS[0];
-    target.src = selected.src;
-    target.alt = selected.alt;
-    label.textContent = `Opción ${selected.label.toLowerCase()}`;
+  let activeBannerIndex = 0;
 
-    options.querySelectorAll("[data-visual-variant]").forEach(button => {
-      button.setAttribute("aria-pressed", String(button.dataset.visualVariant === selected.id));
+  const renderBanner = index => {
+    const count = HERO_MEDIA_CONFIG.banners.length;
+    activeBannerIndex = (index + count) % count;
+    const banner = HERO_MEDIA_CONFIG.banners[activeBannerIndex];
+
+    bannerViewport.innerHTML = `
+      <article class="hero-banner" data-banner-id="${escapeHtml(banner.id)}">
+        <img src="${escapeHtml(banner.src)}" alt="${escapeHtml(banner.alt)}" width="1672" height="941" decoding="async">
+        <div class="hero-banner-shade" aria-hidden="true"></div>
+        <div class="hero-banner-copy">
+          <span>${escapeHtml(banner.eyebrow)}</span>
+          <h2>${escapeHtml(banner.title)}</h2>
+          <p>${escapeHtml(banner.body)}</p>
+        </div>
+      </article>
+    `;
+
+    dotsContainer.querySelectorAll("[data-hero-banner-dot]").forEach((dot, dotIndex) => {
+      const isActive = dotIndex === activeBannerIndex;
+      dot.classList.toggle("is-active", isActive);
+      dot.setAttribute("aria-pressed", String(isActive));
     });
-
-    try {
-      localStorage.setItem("amo-visual-variant", selected.id);
-    } catch (_) {
-      // La selección sigue funcionando aunque el navegador bloquee el almacenamiento local.
-    }
   };
 
-  options.addEventListener("click", event => {
-    const button = event.target.closest("[data-visual-variant]");
-    if (button) selectVariant(button.dataset.visualVariant);
+  dotsContainer.innerHTML = HERO_MEDIA_CONFIG.banners.map((banner, index) => `
+    <button type="button" data-hero-banner-dot="${index}" aria-label="Mostrar ${escapeHtml(banner.eyebrow)}" aria-pressed="${index === 0 ? "true" : "false"}"></button>
+  `).join("");
+
+  const setMode = mode => {
+    const nextMode = mode === "presentation" ? "presentation" : HERO_MEDIA_CONFIG.defaultMode;
+    if (nextMode === "presentation" && video && !video.paused) video.pause();
+    root.dataset.activeMediaMode = nextMode;
+
+    modeButtons.forEach(button => {
+      const isActive = button.dataset.mediaMode === nextMode;
+      button.classList.toggle("is-active", isActive);
+      button.setAttribute("aria-pressed", String(isActive));
+    });
+
+    panels.forEach(panel => {
+      const isActive = panel.dataset.mediaPanel === nextMode;
+      panel.hidden = !isActive;
+      panel.classList.toggle("is-active", isActive);
+    });
+  };
+
+  modeButtons.forEach(button => {
+    button.addEventListener("click", () => setMode(button.dataset.mediaMode));
   });
 
-  let savedVariant = "cercana";
-  try {
-    savedVariant = localStorage.getItem("amo-visual-variant") || savedVariant;
-  } catch (_) {
-    // Usar la variante predeterminada.
-  }
+  dotsContainer.addEventListener("click", event => {
+    const dot = event.target.closest("[data-hero-banner-dot]");
+    if (dot) renderBanner(Number(dot.dataset.heroBannerDot));
+  });
 
-  selectVariant(savedVariant);
+  prevButton?.addEventListener("click", () => renderBanner(activeBannerIndex - 1));
+  nextButton?.addEventListener("click", () => renderBanner(activeBannerIndex + 1));
+
+  renderBanner(0);
+  setMode(HERO_MEDIA_CONFIG.defaultMode);
 }
 
 function isPlaceholderCheckout(url) {

@@ -28,11 +28,46 @@
             Comunidad o evaluación personalizada. Tú eliges cómo avanzar.
           </p>
 
-          <div class="vsl-player" data-vsl-player>
-            <video controls playsinline preload="metadata" poster="assets/consulta-100-poster.webp" data-vsl-video aria-label="Amanda explica la evaluación personalizada de crédito de 100 dólares">
-              <source src="assets/consulta-100.mp4" type="video/mp4">
-              Tu navegador no puede reproducir este video.
-            </video>
+          <div class="hero-media" data-hero-media>
+            <div class="media-switch" role="group" aria-label="Elegir contenido principal">
+              <button class="media-switch-button is-active" type="button" data-media-mode="video" aria-pressed="true">
+                <span aria-hidden="true">▶</span> Video
+              </button>
+              <button class="media-switch-button" type="button" data-media-mode="presentation" aria-pressed="false">
+                <span aria-hidden="true">✦</span> Presentación
+              </button>
+            </div>
+
+            <div class="hero-media-stage">
+              <section class="media-panel media-video-panel is-active" data-media-panel="video" aria-label="Video de Amanda">
+                <div class="vsl-ambient" aria-hidden="true"></div>
+                <div class="vsl-context">
+                  <span class="section-tag">Mensaje de Amanda</span>
+                  <h2>Conoce las dos formas de avanzar</h2>
+                  <p>En 81 segundos, Amanda te explica para quién es cada opción y qué puedes esperar después de elegir.</p>
+                  <ul>
+                    <li>Comunidad educativa en español</li>
+                    <li>Evaluación individual de tu caso</li>
+                  </ul>
+                </div>
+                <div class="vsl-player" data-vsl-player>
+                  <span class="vsl-badge">Amanda Olmo · 1:21</span>
+                  <video controls playsinline preload="metadata" poster="assets/consulta-100-poster.webp" data-vsl-video aria-label="Amanda explica la evaluación personalizada de crédito de 100 dólares">
+                    <source src="assets/consulta-100.mp4" type="video/mp4">
+                    Tu navegador no puede reproducir este video.
+                  </video>
+                </div>
+              </section>
+
+              <section class="media-panel media-presentation-panel" data-media-panel="presentation" aria-label="Presentación de opciones" hidden>
+                <div class="hero-banner-viewport" data-hero-banner aria-live="polite"></div>
+                <div class="hero-banner-controls">
+                  <button class="hero-banner-arrow" type="button" data-hero-banner-prev aria-label="Banner anterior">‹</button>
+                  <div class="hero-banner-dots" data-hero-banner-dots role="group" aria-label="Elegir banner"></div>
+                  <button class="hero-banner-arrow" type="button" data-hero-banner-next aria-label="Banner siguiente">›</button>
+                </div>
+              </section>
+            </div>
           </div>
 
           <div class="hero-actions">
@@ -82,17 +117,8 @@
       <div class="container benefits-grid">
         <div class="benefits-visual-column">
           <div class="benefits-media">
-            <img src="assets/support-real.jpeg" alt="Amanda Olmo en una sesión cercana de orientación" width="1920" height="1080" loading="lazy" decoding="async" data-visual-target>
-            <span class="visual-selection-label" data-visual-label>Opción cercana</span>
-          </div>
-
-          <div class="visual-variant-picker" aria-labelledby="visual-picker-title">
-            <div>
-              <span class="section-tag">Landing a la carta</span>
-              <h3 id="visual-picker-title">Elige la imagen de esta sección</h3>
-              <p>Puedes comparar fotografías reales y direcciones visuales creadas con IA. La elección queda guardada en este navegador.</p>
-            </div>
-            <div class="visual-variant-options" data-visual-options role="group" aria-label="Variantes de imagen"></div>
+            <img src="assets/hero-banner-comunidad.webp" alt="Amanda Olmo en un espacio profesional y cercano de Mandy Academy" width="1672" height="941" loading="lazy" decoding="async">
+            <span class="visual-selection-label">Acompañamiento en español</span>
           </div>
         </div>
         <div class="benefits-copy">
@@ -126,12 +152,12 @@
           <h2 id="authority-title">Amanda Olmo, “Mandy la chica del crédito”</h2>
           <p>Educadora de crédito desde 2020, con preparación enfocada en ayudar a la comunidad hispana a entender mejor su reporte y sus próximos pasos financieros.</p>
         </div>
-        <div class="authority-points" aria-label="Credenciales de Amanda Olmo">
-          <span>Desde 2020</span>
-          <span>Certificada BCCC</span>
-          <span>Certificada CRC</span>
-          <span>Preparadora de impuestos certificada</span>
-        </div>
+        <ul class="authority-points" aria-label="Credenciales de Amanda Olmo">
+          <li>Desde 2020</li>
+          <li>Certificada BCCC</li>
+          <li>Certificada CRC</li>
+          <li>Preparadora de impuestos certificada</li>
+        </ul>
       </div>
     </section>
 
@@ -144,7 +170,7 @@
         </div>
 
         <div class="testimonials-shell">
-          <div class="carousel-controls" aria-label="Controles del carrusel de testimonios">
+          <div class="carousel-controls" role="group" aria-label="Controles del carrusel de testimonios">
             <button class="carousel-btn" type="button" data-carousel-prev aria-label="Testimonio anterior">‹</button>
             <button class="carousel-btn" type="button" data-carousel-next aria-label="Testimonio siguiente">›</button>
           </div>
@@ -281,9 +307,9 @@
 
   <div class="toast" id="checkout-toast" role="status" aria-live="polite" hidden></div>
 
-  <div class="sticky-cta" aria-label="Acceso rapido a paquetes">
+  <nav class="sticky-cta" aria-label="Acceso rápido a paquetes">
     <button class="btn btn-primary" type="button" data-scroll-offers>Ver las dos opciones</button>
-  </div>
+  </nav>
 
   <script src="js/app.js"></script>
 </body>
