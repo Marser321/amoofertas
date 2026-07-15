@@ -646,7 +646,7 @@ h3 {
 }
 
 section {
-  padding: clamp(4rem, 8vw, 6.5rem) 0;
+  padding: clamp(2.6rem, 5.5vw, 4.5rem) 0;
 }
 
 .section-heading {
