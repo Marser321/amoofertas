@@ -1,63 +1,157 @@
 const OFFER_CONFIG = {
   packages: [
     {
-      id: "esencial",
-      name: "Plan Esencial",
-      badge: "Para empezar",
-      price: "Precio pendiente",
-      description: "La ruta base para entender el crédito, leer tu reporte y reconocer qué debes revisar antes de actuar.",
-      checkoutUrl: "#checkout-pending-esencial",
-      buttonLabel: "Comprar Plan Esencial",
-      fineprint: "Nombre, precio, cuotas e inclusiones finales se pueden editar aquí.",
+      id: "comunidad",
+      name: "Comunidad Mandy Academy",
+      shortName: "Comunidad",
+      badge: "Aprende y conecta",
+      price: "$49.99/mes",
+      description: "Un espacio privado en español para aprender con contenido de valor, compartir experiencias y avanzar junto a personas con metas similares.",
+      checkoutUrl: "#checkout-pending-comunidad",
+      followUpUrl: "#access-pending-comunidad",
+      buttonLabel: "Quiero entrar a la comunidad",
+      fineprint: "Membresía con renovación mensual. Puedes cancelar cuando quieras.",
       features: [
-        "Qué es el crédito y cómo leen tu historial",
-        "Burós principales: Experian, Equifax, TransUnion e Innovis",
-        "Reporte de crédito, datos personales y marcas importantes",
-        "Hábitos básicos: balances bajos y pagos a tiempo"
-      ]
+        "Contenido educativo de valor en español",
+        "Acceso a un espacio privado para miembros",
+        "Interacción, apoyo y aprendizaje entre la comunidad",
+        "Nuevas herramientas para tomar decisiones informadas"
+      ],
+      thankYou: {
+        eyebrow: "Bienvenido a la comunidad",
+        title: "Tu lugar en la Comunidad Mandy Academy está listo",
+        lede: "Si tu pago fue aprobado, ya diste el primer paso para aprender, conectar y avanzar junto a nuestra comunidad.",
+        primaryLabel: "Acceder a la comunidad",
+        summaryTitle: "Tu membresía de $49.99 al mes",
+        summaryText: "La membresía se renueva mensualmente y puedes cancelarla cuando quieras. Revisa tu confirmación de compra para conservar los datos de tu suscripción.",
+        steps: [
+          ["Revisa tu correo", "Busca la confirmación de pago y las instrucciones de acceso. Revisa también spam o promociones."],
+          ["Entra al espacio privado", "Usa el botón de acceso cuando el equipo haya habilitado tu entrada a la comunidad."],
+          ["Preséntate y participa", "Conecta con otros miembros, explora el contenido y comienza a crear nuevas sinergias."]
+        ]
+      }
     },
     {
-      id: "premium",
-      name: "Plan Premium",
-      badge: "Más completo",
-      price: "Precio pendiente",
-      description: "La opción más completa para profundizar en revisión, disputas y próximos pasos con más estructura.",
-      checkoutUrl: "#checkout-pending-premium",
-      buttonLabel: "Comprar Plan Premium",
-      fineprint: "Usar este plan para la oferta de mayor valor cuando se confirmen condiciones.",
+      id: "evaluacion",
+      name: "Evaluación personalizada",
+      shortName: "Evaluación",
+      badge: "Atención individual",
+      price: "$100 pago único",
+      description: "Una evaluación individual para revisar tu situación crediticia, aclarar tus próximos pasos y recibir una cotización directa.",
+      checkoutUrl: "#checkout-pending-evaluacion",
+      followUpUrl: "#booking-pending-evaluacion",
+      buttonLabel: "Quiero agendar mi evaluación",
+      fineprint: "El pago cubre la evaluación y la cotización. No incluye el servicio de reparación de crédito.",
       featured: true,
       features: [
-        "Todo lo incluido en el Plan Esencial",
-        "Qué revisar en pagos tarde, colecciones, charge-offs e inquiries",
-        "Conceptos clave de EWS, ChexSystems y verificación bancaria",
-        "Guía para identificar qué puede revisarse o disputarse según tu caso"
-      ]
+        "Evaluación personalizada de tu situación crediticia",
+        "Orientación clara sobre los posibles próximos pasos",
+        "Espacio para explicar tus necesidades y objetivos",
+        "Cotización directa del servicio recomendado para tu caso"
+      ],
+      thankYou: {
+        eyebrow: "Evaluación confirmada",
+        title: "Ahora elige el horario de tu evaluación personalizada",
+        lede: "Si tu pago de $100 fue aprobado, el siguiente paso es agendar tu cita para que podamos conocer tu situación y preparar una cotización.",
+        primaryLabel: "Agendar mi evaluación",
+        summaryTitle: "Qué incluye tu pago de $100",
+        summaryText: "El pago cubre la evaluación personalizada y la preparación de una cotización. No incluye ni garantiza la contratación o el resultado de un servicio de reparación.",
+        steps: [
+          ["Guarda tu comprobante", "Conserva el email o recibo del checkout por si necesitas ayuda con tu compra."],
+          ["Elige tu horario", "Usa el botón de agenda y selecciona una de las citas disponibles."],
+          ["Prepárate para la evaluación", "Ten a mano la información que quieras revisar y las preguntas importantes sobre tu caso."]
+        ]
+      }
     }
   ],
   comparison: [
     {
-      label: "Enfoque",
-      esencial: "Fundamentos del crédito",
-      premium: "Fundamentos + revisión guiada"
+      label: "Objetivo",
+      comunidad: "Aprender y crecer acompañado",
+      evaluacion: "Revisar tu situación individual"
     },
     {
       label: "Ideal para",
-      esencial: "Empezar con claridad",
-      premium: "Profundizar antes de actuar"
+      comunidad: "Quien busca educación continua y conexión",
+      evaluacion: "Quien necesita orientación personalizada"
     },
     {
-      label: "Aprendes",
-      esencial: "Reporte, burós y hábitos",
-      premium: "Marcas negativas, disputas y sistemas bancarios"
+      label: "Recibes",
+      comunidad: "Contenido y espacio privado",
+      evaluacion: "Evaluación y cotización directa"
     },
     {
       label: "Pago",
-      esencial: "Checkout externo",
-      premium: "Checkout externo"
+      comunidad: "$49.99 cada mes",
+      evaluacion: "$100 una sola vez"
+    },
+    {
+      label: "Siguiente paso",
+      comunidad: "Acceder a la comunidad",
+      evaluacion: "Elegir un horario disponible"
     }
   ],
   trackedParams: ["utm_source", "utm_medium", "utm_campaign", "utm_content", "utm_term", "gclid", "fbclid"]
 };
+
+const VISUAL_VARIANTS = [
+  {
+    id: "cercana",
+    label: "Cercana",
+    type: "Foto real",
+    src: "assets/support-real.jpeg",
+    alt: "Amanda Olmo en una sesión cercana de orientación"
+  },
+  {
+    id: "autoridad",
+    label: "Autoridad",
+    type: "Foto real",
+    src: "assets/variant-autoridad-real.jpeg",
+    alt: "Amanda Olmo de pie frente a su escritorio en una imagen de autoridad"
+  },
+  {
+    id: "dinamica",
+    label: "Dinámica",
+    type: "Foto real",
+    src: "assets/variant-dinamica-real.jpeg",
+    alt: "Amanda Olmo atendiendo una llamada y conectando desde su oficina"
+  },
+  {
+    id: "estudio-identidad",
+    label: "Estudio",
+    type: "IA con identidad",
+    src: "assets/variant-estudio-identidad.webp",
+    alt: "Amanda Olmo en un estudio profesional azul y dorado"
+  },
+  {
+    id: "comunidad-identidad",
+    label: "Comunidad",
+    type: "IA con identidad",
+    src: "assets/variant-comunidad-identidad.webp",
+    alt: "Amanda Olmo en un ambiente cercano y luminoso para su comunidad"
+  },
+  {
+    id: "evaluacion-identidad",
+    label: "Evaluación",
+    type: "IA con identidad",
+    src: "assets/variant-evaluacion-identidad.webp",
+    alt: "Amanda Olmo preparada para una evaluación personalizada en su oficina"
+  },
+  {
+    id: "fintech",
+    label: "Fintech",
+    type: "Concepto IA",
+    src: "assets/variant-fintech-ia.webp",
+    alt: "Concepto fintech de Amanda Olmo revisando información financiera"
+  },
+  {
+    id: "credito",
+    label: "Crédito",
+    type: "Concepto IA",
+    src: "assets/variant-credito-ia.webp",
+    alt: "Concepto de Amanda Olmo con tarjetas frente a una computadora"
+  }
+];
 
 document.addEventListener("DOMContentLoaded", () => {
   renderOffers();
@@ -68,6 +162,8 @@ document.addEventListener("DOMContentLoaded", () => {
   initAccordion();
   initVideoTestimonials();
   initVideoCarousel();
+  initVisualVariants();
+  initThankYouPage();
 });
 
 function renderOffers() {
@@ -75,7 +171,7 @@ function renderOffers() {
   if (!grid) return;
 
   grid.innerHTML = OFFER_CONFIG.packages.map(plan => `
-    <article class="offer-card${plan.featured ? " is-featured" : ""}">
+    <article class="offer-card${plan.featured ? " is-featured" : ""}" data-offer="${escapeHtml(plan.id)}">
       <span class="offer-badge">${escapeHtml(plan.badge)}</span>
       <div class="offer-title-row">
         <h3>${escapeHtml(plan.name)}</h3>
@@ -100,14 +196,14 @@ function renderComparison() {
   card.innerHTML = `
     <div class="comparison-row is-head">
       <strong>Detalle</strong>
-      <strong>${escapeHtml(OFFER_CONFIG.packages[0].name)}</strong>
-      <strong>${escapeHtml(OFFER_CONFIG.packages[1].name)}</strong>
+      <strong>${escapeHtml(OFFER_CONFIG.packages[0].shortName)}</strong>
+      <strong>${escapeHtml(OFFER_CONFIG.packages[1].shortName)}</strong>
     </div>
     ${OFFER_CONFIG.comparison.map(row => `
       <div class="comparison-row">
         <strong>${escapeHtml(row.label)}</strong>
-        <span>${escapeHtml(row.esencial)}</span>
-        <span>${escapeHtml(row.premium)}</span>
+        <span data-label="${escapeHtml(OFFER_CONFIG.packages[0].shortName)}">${escapeHtml(row.comunidad)}</span>
+        <span data-label="${escapeHtml(OFFER_CONFIG.packages[1].shortName)}">${escapeHtml(row.evaluacion)}</span>
       </div>
     `).join("")}
   `;
@@ -123,12 +219,56 @@ function initCheckoutButtons() {
     if (!plan) return;
 
     if (isPlaceholderCheckout(plan.checkoutUrl)) {
-      showToast(`El checkout de ${plan.name} está en preparación. Cuando el link final esté configurado, este botón enviará directo al pago.`);
+      showToast(`El checkout de ${plan.name} está en preparación. Muy pronto podrás completar tu compra desde este botón.`);
       return;
     }
 
     window.location.href = withTrackingParams(plan.checkoutUrl);
   });
+}
+
+function initThankYouPage() {
+  const page = document.querySelector("[data-thankyou-page]");
+  if (!page) return;
+
+  const offerId = new URLSearchParams(window.location.search).get("offer");
+  const plan = OFFER_CONFIG.packages.find(item => item.id === offerId);
+  if (!plan) return;
+
+  const content = plan.thankYou;
+  setText("[data-thankyou-eyebrow]", content.eyebrow);
+  setText("[data-thankyou-title]", content.title);
+  setText("[data-thankyou-lede]", content.lede);
+  setText("[data-thankyou-summary-title]", content.summaryTitle);
+  setText("[data-thankyou-summary-text]", content.summaryText);
+
+  const primaryButton = page.querySelector("[data-thankyou-primary]");
+  if (primaryButton) {
+    primaryButton.textContent = content.primaryLabel;
+    primaryButton.hidden = false;
+    primaryButton.addEventListener("click", () => {
+      if (isPlaceholderCheckout(plan.followUpUrl)) {
+        const pendingAction = plan.id === "comunidad" ? "El acceso a la comunidad" : "La agenda de evaluaciones";
+        showToast(`${pendingAction} está en preparación. Revisa tu correo o contacta a soporte para recibir ayuda.`);
+        return;
+      }
+
+      window.location.href = withTrackingParams(plan.followUpUrl);
+    });
+  }
+
+  const steps = page.querySelectorAll("[data-thankyou-step]");
+  steps.forEach((step, index) => {
+    const stepContent = content.steps[index];
+    if (!stepContent) return;
+    setText("[data-step-title]", stepContent[0], step);
+    setText("[data-step-copy]", stepContent[1], step);
+  });
+}
+
+function setText(selector, value, root = document) {
+  const element = root.querySelector(selector);
+  if (element) element.textContent = value;
 }
 
 function initScrollButtons() {
@@ -142,8 +282,8 @@ function initScrollButtons() {
 
 function initStickyCta() {
   const stickyCta = document.querySelector(".sticky-cta");
-  const hero = document.querySelector(".hero-section");
-  if (!stickyCta || !hero) return;
+  const primaryCta = document.querySelector(".hero-actions .btn");
+  if (!stickyCta || !primaryCta) return;
 
   if (!("IntersectionObserver" in window)) {
     stickyCta.classList.add("is-visible");
@@ -155,10 +295,10 @@ function initStickyCta() {
     stickyCta.classList.toggle("is-visible", !entry.isIntersecting);
   }, {
     threshold: 0,
-    rootMargin: "0px 0px -35% 0px"
+    rootMargin: "0px"
   });
 
-  observer.observe(hero);
+  observer.observe(primaryCta);
 }
 
 function initAccordion() {
@@ -216,6 +356,54 @@ function initVideoCarousel() {
 
   prevButton.addEventListener("click", () => scrollByCard(-1));
   nextButton.addEventListener("click", () => scrollByCard(1));
+}
+
+function initVisualVariants() {
+  const target = document.querySelector("[data-visual-target]");
+  const options = document.querySelector("[data-visual-options]");
+  const label = document.querySelector("[data-visual-label]");
+  if (!target || !options || !label) return;
+
+  options.innerHTML = VISUAL_VARIANTS.map((variant, index) => `
+    <button class="visual-variant-option" type="button" data-visual-variant="${escapeHtml(variant.id)}" aria-pressed="${index === 0 ? "true" : "false"}">
+      <img src="${escapeHtml(variant.src)}" alt="" width="160" height="100" loading="lazy" decoding="async">
+      <span>
+        <strong>${escapeHtml(variant.label)}</strong>
+        <small>${escapeHtml(variant.type)}</small>
+      </span>
+    </button>
+  `).join("");
+
+  const selectVariant = id => {
+    const selected = VISUAL_VARIANTS.find(variant => variant.id === id) || VISUAL_VARIANTS[0];
+    target.src = selected.src;
+    target.alt = selected.alt;
+    label.textContent = `Opción ${selected.label.toLowerCase()}`;
+
+    options.querySelectorAll("[data-visual-variant]").forEach(button => {
+      button.setAttribute("aria-pressed", String(button.dataset.visualVariant === selected.id));
+    });
+
+    try {
+      localStorage.setItem("amo-visual-variant", selected.id);
+    } catch (_) {
+      // La selección sigue funcionando aunque el navegador bloquee el almacenamiento local.
+    }
+  };
+
+  options.addEventListener("click", event => {
+    const button = event.target.closest("[data-visual-variant]");
+    if (button) selectVariant(button.dataset.visualVariant);
+  });
+
+  let savedVariant = "cercana";
+  try {
+    savedVariant = localStorage.getItem("amo-visual-variant") || savedVariant;
+  } catch (_) {
+    // Usar la variante predeterminada.
+  }
+
+  selectVariant(savedVariant);
 }
 
 function isPlaceholderCheckout(url) {

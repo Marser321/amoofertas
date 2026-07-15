@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gracias por tu compra | Mandy Academy</title>
+  <meta name="description" content="Gracias por elegir Mandy Academy. Consulta aquí los próximos pasos de tu compra.">
+  <meta name="robots" content="noindex, nofollow">
+  <meta property="og:title" content="Gracias por tu compra | Mandy Academy">
+  <meta property="og:description" content="Tu compra fue recibida. Estos son los próximos pasos para acceder a tu paquete.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="assets/hero-real.jpeg">
+  <link rel="icon" type="image/png" href="assets/logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="thankyou-page" data-thankyou-page>
+  <main>
+    <section class="purchase-thankyou-section" aria-labelledby="thankyou-title">
+      <div class="container purchase-thankyou-layout">
+        <article class="purchase-thankyou-card">
+          <img class="thankyou-logo" src="assets/logo.png" alt="Mandy Academy" width="140" height="50">
+          <span class="eyebrow" data-thankyou-eyebrow>Gracias por elegir Mandy Academy</span>
+          <h1 id="thankyou-title" data-thankyou-title>Recibimos tu solicitud de compra</h1>
+          <p class="thankyou-lede" data-thankyou-lede>
+            Si tu pago fue aprobado, revisa tu correo para confirmar la opción elegida y conocer los próximos pasos.
+          </p>
+
+          <div class="thankyou-actions" aria-label="Acciones recomendadas">
+            <button class="btn btn-primary" type="button" data-thankyou-primary hidden>Continuar</button>
+            <a class="btn btn-secondary" href="index.html">Volver a las ofertas</a>
+            <a class="btn btn-secondary" href="mailto:soporte@mandyacademy.com?subject=Soporte%20compra%20Amo%20Ofertas">Contactar soporte</a>
+          </div>
+
+          <div class="next-steps" aria-label="Próximos pasos">
+            <article data-thankyou-step>
+              <span>01</span>
+              <h2 data-step-title>Revisa tu correo</h2>
+              <p data-step-copy>Busca la confirmación de pago y revisa también las carpetas de spam o promociones.</p>
+            </article>
+            <article data-thankyou-step>
+              <span>02</span>
+              <h2 data-step-title>Confirma tu opción</h2>
+              <p data-step-copy>Verifica que la confirmación corresponda a la comunidad o a la evaluación personalizada.</p>
+            </article>
+            <article data-thankyou-step>
+              <span>03</span>
+              <h2 data-step-title>Solicita ayuda si la necesitas</h2>
+              <p data-step-copy>Contacta a soporte si no recibes instrucciones o tienes dudas sobre tu compra.</p>
+            </article>
+          </div>
+        </article>
+
+        <aside class="purchase-summary-card" aria-label="Resumen de acceso">
+          <span class="section-tag">Importante</span>
+          <h2 data-thankyou-summary-title>Esta página no procesa pagos</h2>
+          <p data-thankyou-summary-text>
+            Aquí encontrarás los próximos pasos de tu compra, pero no capturamos tarjetas ni mostramos información privada de la transacción.
+          </p>
+          <ul class="thankyou-checklist">
+            <li>Educación financiera en español.</li>
+            <li>Resultados individuales pueden variar.</li>
+            <li>No se garantizan aumentos de score ni aprobaciones.</li>
+            <li>No se promete eliminar información precisa o verificable.</li>
+          </ul>
+        </aside>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer thankyou-footer">
+    <div class="container footer-grid">
+      <p>
+        Mandy Academy y AMO Management LLC proporcionan educación financiera y herramientas de preparación. No somos asesoría legal ni garantizamos aumentos específicos de puntaje, aprobaciones, eliminación de información precisa o resultados determinados.
+      </p>
+      <small>© 2026 Mandy Academy / AMO Management LLC — Las Vegas, Nevada, EE.UU.</small>
+    </div>
+  </footer>
+  <div class="toast" id="checkout-toast" role="status" aria-live="polite" hidden></div>
+  <script src="js/app.js"></script>
+</body>
+</html>
