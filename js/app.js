@@ -7,7 +7,7 @@ const OFFER_CONFIG = {
       badge: "Aprende y conecta",
       price: "$49.99/mes",
       description: "Un espacio privado en español para aprender con contenido de valor, compartir experiencias y avanzar junto a personas con metas similares.",
-      checkoutUrl: "#checkout-pending-comunidad",
+      checkoutUrl: "https://app.amomanagements.com/payment-link/6a57c155b1a0a3e48f24d34c",
       followUpUrl: "#access-pending-comunidad",
       buttonLabel: "Quiero entrar a la comunidad",
       fineprint: "Membresía con renovación mensual. Puedes cancelar cuando quieras.",
@@ -38,7 +38,7 @@ const OFFER_CONFIG = {
       badge: "Atención individual",
       price: "$100 pago único",
       description: "Una evaluación individual para revisar tu situación crediticia, aclarar tus próximos pasos y recibir una cotización directa.",
-      checkoutUrl: "#checkout-pending-evaluacion",
+      checkoutUrl: "https://app.amomanagements.com/payment-link/6a57c274b1a0a3e48f24d353",
       followUpUrl: "#booking-pending-evaluacion",
       buttonLabel: "Comprar mi evaluación por $100",
       fineprint: "El pago cubre la evaluación y la cotización. No incluye el servicio de reparación de crédito.",
@@ -189,7 +189,9 @@ function initThankYouPage() {
   const page = document.querySelector("[data-thankyou-page]");
   if (!page) return;
 
-  const offerId = new URLSearchParams(window.location.search).get("offer");
+  const params = new URLSearchParams(window.location.search);
+  const pathMatch = window.location.pathname.toLowerCase().match(/(comunidad|evaluacion)/);
+  const offerId = params.get("offer") || (pathMatch && pathMatch[1]);
   const plan = OFFER_CONFIG.packages.find(item => item.id === offerId);
   if (!plan) return;
 

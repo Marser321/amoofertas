@@ -7,5 +7,15 @@
       "destination": "/ofertas",
       "permanent": false
     }
+  ],
+  "rewrites": [
+    {
+      "source": "/gracias/comunidad",
+      "destination": "/gracias"
+    },
+    {
+      "source": "/gracias/evaluacion",
+      "destination": "/gracias"
+    }
   ]
 }
