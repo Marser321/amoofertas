@@ -40,7 +40,7 @@ const OFFER_CONFIG = {
       description: "Una evaluación individual para revisar tu situación crediticia, aclarar tus próximos pasos y recibir una cotización directa.",
       checkoutUrl: "#checkout-pending-evaluacion",
       followUpUrl: "#booking-pending-evaluacion",
-      buttonLabel: "Quiero agendar mi evaluación",
+      buttonLabel: "Comprar mi evaluación por $100",
       fineprint: "El pago cubre la evaluación y la cotización. No incluye el servicio de reparación de crédito.",
       featured: true,
       features: [
@@ -94,34 +94,12 @@ const OFFER_CONFIG = {
   trackedParams: ["utm_source", "utm_medium", "utm_campaign", "utm_content", "utm_term", "gclid", "fbclid"]
 };
 
-const HERO_MEDIA_CONFIG = {
-  defaultMode: "video",
-  banners: [
-    {
-      id: "dos-caminos",
-      eyebrow: "Dos caminos para avanzar",
-      title: "Dos caminos. Tú eliges cómo avanzar.",
-      body: "Comunidad educativa o evaluación personalizada.",
-      src: "assets/hero-banner-dos-caminos.webp",
-      alt: "Amanda Olmo presenta dos caminos para avanzar con el crédito"
-    },
-    {
-      id: "comunidad",
-      eyebrow: "Comunidad Mandy Academy",
-      title: "Aprende. Conecta. Avanza.",
-      body: "$49.99 al mes · Cancela cuando quieras.",
-      src: "assets/hero-banner-comunidad.webp",
-      alt: "Amanda Olmo en un espacio profesional que representa la Comunidad Mandy Academy"
-    },
-    {
-      id: "evaluacion",
-      eyebrow: "Evaluación personalizada",
-      title: "Claridad para tu caso.",
-      body: "$100 pago único · Incluye evaluación y cotización.",
-      src: "assets/hero-banner-evaluacion.webp",
-      alt: "Amanda Olmo ofrece atención individual durante una evaluación personalizada"
-    }
-  ]
+const OFFERS_HERO_CONFIG = {
+  posterDesktop: "assets/hero-banner-dos-caminos.webp",
+  posterMobile: "assets/hero-banner-dos-caminos.webp",
+  videoDesktop: "",
+  videoMobile: "",
+  alt: "Amanda Olmo presenta dos caminos para avanzar con el crédito"
 };
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -133,7 +111,7 @@ document.addEventListener("DOMContentLoaded", () => {
   initAccordion();
   initVideoTestimonials();
   initVideoCarousel();
-  initHeroMedia();
+  initOffersHero();
   initThankYouPage();
 });
 
@@ -141,7 +119,16 @@ function renderOffers() {
   const grid = document.getElementById("offer-grid");
   if (!grid) return;
 
-  grid.innerHTML = OFFER_CONFIG.packages.map(plan => `
+  const requestedIds = (grid.dataset.offerIds || "")
+    .split(",")
+    .map(id => id.trim())
+    .filter(Boolean);
+  const packages = requestedIds.length
+    ? OFFER_CONFIG.packages.filter(plan => requestedIds.includes(plan.id))
+    : OFFER_CONFIG.packages;
+
+  grid.classList.toggle("is-single", packages.length === 1);
+  grid.innerHTML = packages.map(plan => `
     <article class="offer-card${plan.featured ? " is-featured" : ""}" data-offer="${escapeHtml(plan.id)}">
       <span class="offer-badge">${escapeHtml(plan.badge)}</span>
       <div class="offer-title-row">
@@ -329,81 +316,54 @@ function initVideoCarousel() {
   nextButton.addEventListener("click", () => scrollByCard(1));
 }
 
-function initHeroMedia() {
-  const root = document.querySelector("[data-hero-media]");
+function initOffersHero() {
+  const root = document.querySelector("[data-offers-hero]");
   if (!root) return;
 
-  const modeButtons = Array.from(root.querySelectorAll("[data-media-mode]"));
-  const panels = Array.from(root.querySelectorAll("[data-media-panel]"));
-  const video = root.querySelector("[data-vsl-video]");
-  const bannerViewport = root.querySelector("[data-hero-banner]");
-  const dotsContainer = root.querySelector("[data-hero-banner-dots]");
-  const prevButton = root.querySelector("[data-hero-banner-prev]");
-  const nextButton = root.querySelector("[data-hero-banner-next]");
-  if (!modeButtons.length || !panels.length || !bannerViewport || !dotsContainer) return;
+  const picture = root.querySelector("[data-offers-hero-picture]");
+  const mobileSource = root.querySelector("[data-offers-hero-mobile]");
+  const image = root.querySelector("[data-offers-hero-image]");
+  const video = root.querySelector("[data-offers-hero-video]");
+  if (!picture || !image || !video) return;
 
-  let activeBannerIndex = 0;
+  image.src = OFFERS_HERO_CONFIG.posterDesktop;
+  image.alt = OFFERS_HERO_CONFIG.alt;
+  if (mobileSource) mobileSource.srcset = OFFERS_HERO_CONFIG.posterMobile || OFFERS_HERO_CONFIG.posterDesktop;
 
-  const renderBanner = index => {
-    const count = HERO_MEDIA_CONFIG.banners.length;
-    activeBannerIndex = (index + count) % count;
-    const banner = HERO_MEDIA_CONFIG.banners[activeBannerIndex];
+  const reduceMotion = window.matchMedia?.("(prefers-reduced-motion: reduce)").matches;
+  const hasAnimatedHero = Boolean(OFFERS_HERO_CONFIG.videoDesktop || OFFERS_HERO_CONFIG.videoMobile);
+  if (reduceMotion || !hasAnimatedHero) return;
 
-    bannerViewport.innerHTML = `
-      <article class="hero-banner" data-banner-id="${escapeHtml(banner.id)}">
-        <img src="${escapeHtml(banner.src)}" alt="${escapeHtml(banner.alt)}" width="1672" height="941" decoding="async">
-        <div class="hero-banner-shade" aria-hidden="true"></div>
-        <div class="hero-banner-copy">
-          <span>${escapeHtml(banner.eyebrow)}</span>
-          <h2>${escapeHtml(banner.title)}</h2>
-          <p>${escapeHtml(banner.body)}</p>
-        </div>
-      </article>
-    `;
+  const sources = [
+    OFFERS_HERO_CONFIG.videoMobile
+      ? { src: OFFERS_HERO_CONFIG.videoMobile, media: "(max-width: 680px)" }
+      : null,
+    OFFERS_HERO_CONFIG.videoDesktop
+      ? { src: OFFERS_HERO_CONFIG.videoDesktop, media: "" }
+      : null
+  ].filter(Boolean);
 
-    dotsContainer.querySelectorAll("[data-hero-banner-dot]").forEach((dot, dotIndex) => {
-      const isActive = dotIndex === activeBannerIndex;
-      dot.classList.toggle("is-active", isActive);
-      dot.setAttribute("aria-pressed", String(isActive));
-    });
-  };
-
-  dotsContainer.innerHTML = HERO_MEDIA_CONFIG.banners.map((banner, index) => `
-    <button type="button" data-hero-banner-dot="${index}" aria-label="Mostrar ${escapeHtml(banner.eyebrow)}" aria-pressed="${index === 0 ? "true" : "false"}"></button>
-  `).join("");
-
-  const setMode = mode => {
-    const nextMode = mode === "presentation" ? "presentation" : HERO_MEDIA_CONFIG.defaultMode;
-    if (nextMode === "presentation" && video && !video.paused) video.pause();
-    root.dataset.activeMediaMode = nextMode;
-
-    modeButtons.forEach(button => {
-      const isActive = button.dataset.mediaMode === nextMode;
-      button.classList.toggle("is-active", isActive);
-      button.setAttribute("aria-pressed", String(isActive));
-    });
-
-    panels.forEach(panel => {
-      const isActive = panel.dataset.mediaPanel === nextMode;
-      panel.hidden = !isActive;
-      panel.classList.toggle("is-active", isActive);
-    });
-  };
-
-  modeButtons.forEach(button => {
-    button.addEventListener("click", () => setMode(button.dataset.mediaMode));
+  sources.forEach(sourceConfig => {
+    const source = document.createElement("source");
+    source.src = sourceConfig.src;
+    source.type = "video/mp4";
+    if (sourceConfig.media) source.media = sourceConfig.media;
+    video.appendChild(source);
   });
 
-  dotsContainer.addEventListener("click", event => {
-    const dot = event.target.closest("[data-hero-banner-dot]");
-    if (dot) renderBanner(Number(dot.dataset.heroBannerDot));
+  video.poster = OFFERS_HERO_CONFIG.posterDesktop;
+  video.hidden = false;
+  video.muted = true;
+  video.addEventListener("playing", () => root.classList.add("is-video-ready"), { once: true });
+  video.addEventListener("error", () => {
+    video.hidden = true;
+    root.classList.remove("is-video-ready");
   });
-
-  prevButton?.addEventListener("click", () => renderBanner(activeBannerIndex - 1));
-  nextButton?.addEventListener("click", () => renderBanner(activeBannerIndex + 1));
-
-  renderBanner(0);
-  setMode(HERO_MEDIA_CONFIG.defaultMode);
+  video.load();
+  video.play().catch(() => {
+    video.hidden = true;
+    root.classList.remove("is-video-ready");
+  });
 }
 
 function isPlaceholderCheckout(url) {

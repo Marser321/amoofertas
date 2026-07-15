@@ -9,7 +9,7 @@
   <meta property="og:title" content="Elige tu próximo paso | Mandy Academy">
   <meta property="og:description" content="Dos caminos claros para avanzar: comunidad educativa o evaluación personalizada de tu crédito.">
   <meta property="og:type" content="website">
-  <meta property="og:image" content="assets/hero-real.jpeg">
+  <meta property="og:image" content="assets/hero-banner-dos-caminos.webp">
   <link rel="icon" type="image/png" href="assets/favicon-mark.png">
   <link rel="apple-touch-icon" href="assets/favicon-mark.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -19,68 +19,28 @@
 </head>
 <body>
   <main id="top">
-    <section class="hero-section" aria-labelledby="hero-title">
+    <section class="hero-section offers-hero-section" aria-labelledby="hero-title">
       <div class="hero-bg" aria-hidden="true"></div>
-      <div class="container hero-grid">
-        <div class="hero-copy">
-          <span class="eyebrow">Dos caminos para avanzar</span>
-          <h1 id="hero-title">Elige cómo avanzar<br>con tu crédito</h1>
-          <p class="hero-lede">
-            Comunidad o evaluación personalizada. Tú eliges cómo avanzar.
-          </p>
-
-          <div class="hero-media" data-hero-media>
-            <div class="media-switch" role="group" aria-label="Elegir contenido principal">
-              <button class="media-switch-button is-active" type="button" data-media-mode="video" aria-pressed="true">
-                <span aria-hidden="true">▶</span> Video
-              </button>
-              <button class="media-switch-button" type="button" data-media-mode="presentation" aria-pressed="false">
-                <span aria-hidden="true">✦</span> Presentación
-              </button>
-            </div>
-
-            <div class="hero-media-stage">
-              <section class="media-panel media-video-panel is-active" data-media-panel="video" aria-label="Video de Amanda">
-                <div class="vsl-ambient" aria-hidden="true"></div>
-                <div class="vsl-context">
-                  <span class="section-tag">Mensaje de Amanda</span>
-                  <h2>Conoce las dos formas de avanzar</h2>
-                  <p>En 81 segundos, Amanda te explica para quién es cada opción y qué puedes esperar después de elegir.</p>
-                  <ul>
-                    <li>Comunidad educativa en español</li>
-                    <li>Evaluación individual de tu caso</li>
-                  </ul>
-                </div>
-                <div class="vsl-player" data-vsl-player>
-                  <span class="vsl-badge">Amanda Olmo · 1:21</span>
-                  <video controls playsinline preload="metadata" poster="assets/consulta-100-poster.webp" data-vsl-video aria-label="Amanda explica la evaluación personalizada de crédito de 100 dólares">
-                    <source src="assets/consulta-100.mp4" type="video/mp4">
-                    Tu navegador no puede reproducir este video.
-                  </video>
-                </div>
-              </section>
-
-              <section class="media-panel media-presentation-panel" data-media-panel="presentation" aria-label="Presentación de opciones" hidden>
-                <div class="hero-banner-viewport" data-hero-banner aria-live="polite"></div>
-                <div class="hero-banner-controls">
-                  <button class="hero-banner-arrow" type="button" data-hero-banner-prev aria-label="Banner anterior">‹</button>
-                  <div class="hero-banner-dots" data-hero-banner-dots role="group" aria-label="Elegir banner"></div>
-                  <button class="hero-banner-arrow" type="button" data-hero-banner-next aria-label="Banner siguiente">›</button>
-                </div>
-              </section>
-            </div>
-          </div>
-
-          <div class="hero-actions">
+      <div class="container offers-hero-layout">
+        <div class="offers-hero" data-offers-hero>
+          <picture class="offers-hero-picture" data-offers-hero-picture>
+            <source media="(max-width: 680px)" srcset="assets/hero-banner-dos-caminos.webp" data-offers-hero-mobile>
+            <img src="assets/hero-banner-dos-caminos.webp" alt="Amanda Olmo presenta dos caminos para avanzar con el crédito" width="1672" height="941" fetchpriority="high" decoding="async" data-offers-hero-image>
+          </picture>
+          <video class="offers-hero-video" muted loop playsinline preload="metadata" data-offers-hero-video hidden aria-hidden="true"></video>
+          <div class="offers-hero-shade" aria-hidden="true"></div>
+          <div class="offers-hero-copy">
+            <span class="eyebrow">Dos opciones para avanzar</span>
+            <h1 id="hero-title">Elige uno de dos caminos para continuar con tu crédito.</h1>
+            <p>Comunidad Mandy Academy o evaluación personalizada: elige la opción que mejor responda a lo que necesitas hoy.</p>
             <button class="btn btn-primary" type="button" data-scroll-offers>Ver las dos opciones</button>
           </div>
-          <ul class="trust-list" aria-label="Puntos de confianza">
-            <li>100% en español</li>
-            <li>Educación responsable</li>
-            <li>Próximos pasos claros</li>
-          </ul>
         </div>
-
+        <ul class="trust-list offers-hero-trust" aria-label="Puntos de confianza">
+          <li>100% en español</li>
+          <li>Educación responsable</li>
+          <li>Próximos pasos claros</li>
+        </ul>
       </div>
     </section>
 
@@ -92,7 +52,7 @@
           <p>Las dos opciones te ayudan a avanzar de forma distinta. Elige la que mejor se adapte a tu momento y a la orientación que buscas.</p>
         </div>
 
-        <div class="offer-grid" id="offer-grid" aria-live="polite"></div>
+        <div class="offer-grid" id="offer-grid" data-offer-ids="comunidad,evaluacion" aria-live="polite"></div>
 
         <div class="checkout-note" role="note">
           <strong>Pago seguro en una plataforma externa.</strong>

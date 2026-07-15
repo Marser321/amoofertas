@@ -1,58 +1,66 @@
 # Amo Ofertas
 
-Landing estática de compra para la Comunidad Mandy Academy y la evaluación personalizada de crédito.
+Sitio estático con dos recorridos de venta que comparten ofertas, checkout y página postcompra.
 
-## Multimedia del hero
+## Rutas
 
-El bloque principal comienza siempre en modo `Video` y permite cambiar manualmente a `Presentación`. Los tres banners, su orden y sus textos están centralizados en `HERO_MEDIA_CONFIG`, dentro de `js/app.js`.
+- `index.html`: landing principal con Comunidad Mandy Academy y Evaluación personalizada.
+- `evaluacion.html`: funnel VSL dedicado a la evaluación de $100. Se distribuye mediante campañas y no se enlaza desde la landing principal.
+- `gracias.html?offer=comunidad`: próximos pasos de la membresía.
+- `gracias.html?offer=evaluacion`: agenda posterior a la evaluación.
 
-Archivos finales:
+## Configuración de ofertas
 
-- `assets/hero-banner-dos-caminos.webp`
-- `assets/hero-banner-comunidad.webp`
-- `assets/hero-banner-evaluacion.webp`
+Precios, beneficios, botones, checkouts y destinos posteriores están centralizados en `OFFER_CONFIG`, dentro de `js/app.js`.
 
-El texto se renderiza con HTML/CSS sobre las imágenes para mantenerlo nítido, accesible y editable.
+Los contenedores con `data-offer-ids` deciden qué tarjetas renderizar:
 
-## Editar paquetes
+- `data-offer-ids="comunidad,evaluacion"`: ambas ofertas.
+- `data-offer-ids="evaluacion"`: solo la evaluación.
 
-Los nombres, precios, inclusiones, links de checkout y destinos posteriores a la compra están centralizados en `js/app.js`, dentro de `OFFER_CONFIG`.
+Todos los botones con `data-checkout-plan="evaluacion"` utilizan la misma URL de checkout. Los parámetros `utm_*`, `gclid` y `fbclid` se conservan al salir hacia checkout y hacia el destino postcompra.
 
-Campos principales por paquete:
-
-- `name`: nombre visible del paquete.
-- `price`: precio o texto de precio.
-- `checkoutUrl`: link externo de pago.
-- `followUpUrl`: acceso a la comunidad o calendario de evaluación.
-- `features`: lista de beneficios.
-- `buttonLabel`: texto del botón.
-
-Mientras `checkoutUrl` o `followUpUrl` sean placeholders, los botones mostrarán un aviso de que el flujo está en preparación.
-
-## URLs pendientes antes de publicar
+## URLs pendientes
 
 Reemplazar estos cuatro placeholders en `OFFER_CONFIG`:
 
-| Oferta | Campo | Placeholder actual |
+| Oferta | Campo | Placeholder |
 | --- | --- | --- |
 | Comunidad | `checkoutUrl` | `#checkout-pending-comunidad` |
 | Comunidad | `followUpUrl` | `#access-pending-comunidad` |
 | Evaluación | `checkoutUrl` | `#checkout-pending-evaluacion` |
 | Evaluación | `followUpUrl` | `#booking-pending-evaluacion` |
 
-Los parámetros `utm_*`, `gclid` y `fbclid` se conservan al salir hacia checkout y hacia el siguiente paso postcompra.
+Mientras un valor siga siendo placeholder, el botón mostrará un aviso y no abandonará la página.
 
-## Retornos del checkout
-
-Configurar cada plataforma de pago para volver a una de estas direcciones después de una compra aprobada:
+Configurar los retornos de los checkouts así:
 
 - Comunidad: `gracias.html?offer=comunidad`
 - Evaluación: `gracias.html?offer=evaluacion`
 
-La página de gracias usa el parámetro `offer` para mostrar el próximo paso correcto. Sin un valor válido muestra el estado general y el acceso a soporte.
+La página de gracias no verifica el pago por sí sola; por eso mantiene copy condicional y no confirma una transacción únicamente por el parámetro de URL.
 
-La página es informativa y no verifica por sí misma el estado del pago. Por eso el copy usa la condición “si tu pago fue aprobado” y evita confirmar una transacción basándose únicamente en el parámetro de URL.
+## Hero de la landing principal
+
+La imagen, los futuros videos animados y el texto alternativo están centralizados en `OFFERS_HERO_CONFIG`, dentro de `js/app.js`.
+
+Configuración inicial:
+
+- `posterDesktop`: `assets/hero-banner-dos-caminos.webp`
+- `posterMobile`: `assets/hero-banner-dos-caminos.webp`
+- `videoDesktop`: vacío
+- `videoMobile`: vacío
+
+Para activar el banner animado:
+
+1. Guardar los MP4 optimizados en `assets/`.
+2. Completar `videoDesktop` y `videoMobile`.
+3. Mantener los posters como fallback.
+
+El video ambiental se reproduce silenciado, en loop y con `playsinline`. Si el navegador bloquea la reproducción, el archivo falla o la persona prefiere movimiento reducido, se conserva el poster estático.
+
+Los prompts de generación y animación están documentados en [`BANNER_PROMPTS.md`](BANNER_PROMPTS.md).
 
 ## Probar localmente
 
-Abrir `index.html` directamente en el navegador o servir la carpeta con cualquier servidor estático.
+Servir la carpeta con un servidor estático y revisar las tres rutas. Abrir los HTML directamente puede limitar algunas pruebas de video o navegación.
