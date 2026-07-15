@@ -386,6 +386,10 @@ h3 {
   height: 100%;
 }
 
+.media-presentation-panel {
+  padding: 0;
+}
+
 .hero-banner {
   position: relative;
   overflow: hidden;
@@ -490,6 +494,12 @@ h3 {
   width: 24px;
   border-radius: 999px;
   background: var(--gold-bright);
+}
+
+@media (min-width: 681px) {
+  .hero-media[data-active-media-mode="presentation"] .hero-media-stage {
+    aspect-ratio: 3 / 2;
+  }
 }
 
 .btn {
