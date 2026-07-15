@@ -1260,6 +1260,81 @@ a:focus-visible {
   outline-offset: 3px;
 }
 
+@media (min-width: 1100px) {
+  .hero-section {
+    padding-block: 1.5rem;
+  }
+
+  .hero-copy {
+    grid-template-columns: minmax(380px, 420px) minmax(0, 1fr);
+    grid-template-areas:
+      "eyebrow media"
+      "title media"
+      "lede media"
+      "actions media"
+      "trust media";
+    column-gap: clamp(1.8rem, 3vw, 3rem);
+    row-gap: 1rem;
+    align-items: center;
+    text-align: left;
+  }
+
+  .hero-copy > .eyebrow {
+    grid-area: eyebrow;
+    justify-self: start;
+  }
+
+  .hero-copy > h1 {
+    grid-area: title;
+    max-width: none;
+    font-size: clamp(2.55rem, 3.1vw, 2.8rem);
+  }
+
+  .hero-copy > .hero-lede {
+    grid-area: lede;
+  }
+
+  .hero-copy > .hero-media {
+    grid-area: media;
+    width: 100%;
+    margin-top: 0;
+  }
+
+  .hero-copy > .hero-media .media-video-panel {
+    grid-template-columns: minmax(0, 1fr) minmax(220px, 260px);
+    gap: 1.25rem;
+    padding: 1.1rem;
+  }
+
+  .hero-copy > .hero-media .vsl-context {
+    gap: 0.65rem;
+    padding-left: 0.5rem;
+  }
+
+  .hero-copy > .hero-media .vsl-context h2 {
+    max-width: 12ch;
+    font-size: clamp(2rem, 2.6vw, 2.45rem);
+  }
+
+  .hero-copy > .hero-media .vsl-context p,
+  .hero-copy > .hero-media .vsl-context li {
+    font-size: 0.9rem;
+  }
+
+  .hero-copy > .hero-actions {
+    grid-area: actions;
+  }
+
+  .hero-copy > .trust-list {
+    grid-area: trust;
+  }
+
+  .hero-actions,
+  .trust-list {
+    justify-content: flex-start;
+  }
+}
+
 @media (min-width: 941px) {
   .video-card {
     flex-basis: calc((100% - 2rem) / 3);
