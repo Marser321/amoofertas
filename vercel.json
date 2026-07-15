@@ -1,0 +1,17 @@
+{
+  "cleanUrls": true,
+  "trailingSlash": false,
+  "redirects": [
+    {
+      "source": "/",
+      "destination": "/ofertas",
+      "permanent": false
+    }
+  ],
+  "rewrites": [
+    {
+      "source": "/ofertas",
+      "destination": "/index.html"
+    }
+  ]
+}

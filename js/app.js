@@ -95,8 +95,8 @@ const OFFER_CONFIG = {
 };
 
 const OFFERS_HERO_CONFIG = {
-  posterDesktop: "assets/hero-banner-dos-caminos.webp",
-  posterMobile: "assets/hero-banner-dos-caminos.webp",
+  posterDesktop: "/assets/hero-banner-dos-caminos.webp",
+  posterMobile: "/assets/hero-banner-dos-caminos.webp",
   videoDesktop: "",
   videoMobile: "",
   alt: "Amanda Olmo presenta dos caminos para avanzar con el crédito"
