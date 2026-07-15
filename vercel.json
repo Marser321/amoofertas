@@ -7,11 +7,5 @@
       "destination": "/ofertas",
       "permanent": false
     }
-  ],
-  "rewrites": [
-    {
-      "source": "/ofertas",
-      "destination": "/index.html"
-    }
   ]
 }
