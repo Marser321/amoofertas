@@ -4,10 +4,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Elige tu próximo paso | Mandy Academy</title>
-  <meta name="description" content="Elige cómo avanzar con tu crédito: recibe una asesoría personalizada con Amanda Olmo o aprende por tu cuenta en Mandy Academy.">
+  <meta name="description" content="Agenda una asesoría personalizada sin costo durante la masterclass o aprende por tu cuenta en Mandy Academy.">
   <meta name="robots" content="index, follow">
   <meta property="og:title" content="Elige tu próximo paso | Mandy Academy">
-  <meta property="og:description" content="Dos caminos claros para avanzar: asesoría personalizada de crédito o aprendizaje práctico en Mandy Academy.">
+  <meta property="og:description" content="Durante la masterclass, agenda gratis una asesoría personalizada de crédito o avanza por tu cuenta con Mandy Academy.">
   <meta property="og:type" content="website">
   <meta property="og:image" content="/assets/hero-banner-dos-caminos.webp">
   <link rel="canonical" href="/ofertas">
@@ -16,34 +16,24 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/css/styles.css?v=advisory-first-2">
+  <link rel="stylesheet" href="/css/styles.css?v=academy-offer-2">
 </head>
 <body>
   <main id="top">
-    <section class="hero-section offers-hero-section" aria-labelledby="hero-title">
+    <section class="offers-section offers-primary-section" id="paquetes" aria-labelledby="hero-title" data-sticky-threshold>
       <div class="hero-bg" aria-hidden="true"></div>
-      <div class="container offers-hero-layout">
-        <header class="offers-hero-intro">
-          <span class="eyebrow">Oferta exclusiva de la masterclass</span>
-          <h1 id="hero-title">Toma acción y recibe tu asesoría sin costo</h1>
-          <p>Elige avanzar con una especialista o aprender por tu cuenta en Mandy Academy.</p>
-        </header>
-      </div>
-    </section>
-
-    <section class="offers-section" id="paquetes" aria-labelledby="offers-title">
       <div class="container">
-        <div class="section-heading">
-          <span class="section-tag">Elige según el apoyo que necesitas hoy</span>
-          <h2 id="offers-title">Con una especialista o por tu cuenta</h2>
-          <p>Si quieres orientación sobre tu caso, comienza con la asesoría. Si prefieres aprender y aplicar las herramientas a tu ritmo, entra a Mandy Academy.</p>
-        </div>
+        <header class="section-heading offers-primary-heading">
+          <span class="eyebrow">Oferta especial de la masterclass</span>
+          <h1 id="hero-title">Elige cómo quieres avanzar</h1>
+          <p>Agenda una asesoría personalizada sin costo o aprende por tu cuenta en Mandy Academy.</p>
+        </header>
 
-        <div class="offer-grid" id="offer-grid" data-offer-ids="evaluacion,comunidad" data-offer-action="details" aria-live="polite"></div>
+        <div class="offer-grid" id="offer-grid" data-offer-ids="evaluacion,comunidad" data-offer-action="promo" aria-live="polite"></div>
 
         <div class="checkout-note" role="note">
-          <strong>Pago seguro en una plataforma externa.</strong>
-          Esta página no captura datos de tarjeta. Al completar tu compra recibirás los próximos pasos correspondientes a la opción elegida.
+          <strong>La asesoría promocional no requiere pago.</strong>
+          La agenda se completa en el sitio de AMO Management y el acceso a Mandy Academy se activa directamente en Skool.
         </div>
       </div>
     </section>
@@ -170,10 +160,10 @@
 
     <section class="final-cta-section" aria-labelledby="final-cta-title">
       <div class="container final-cta-card">
-        <span class="section-tag">Tu siguiente paso empieza aquí</span>
-        <h2 id="final-cta-title">Elige la opción que te dé la claridad que necesitas hoy</h2>
-        <p>Recibe asesoría personalizada de una especialista o aprende por tu cuenta dentro de Mandy Academy.</p>
-        <button class="btn btn-secondary" type="button" data-scroll-offers>Ver los dos caminos</button>
+        <span class="section-tag">Oferta de la masterclass</span>
+        <h2 id="final-cta-title">Agenda hoy y ahorra los US$100</h2>
+        <p>Reserva tu asesoría personalizada sin costo mientras estás en la masterclass.</p>
+        <button class="btn btn-primary is-priority-action" type="button" data-checkout-plan="evaluacion" data-offer-destination="promo">Agendar mi asesoría sin costo</button>
       </div>
     </section>
   </main>
@@ -185,7 +175,7 @@
         Mandy Academy y AMO Management LLC proporcionan educación financiera y herramientas de preparación. No somos asesoría legal ni garantizamos aumentos específicos de puntaje, aprobaciones, eliminación de información precisa o resultados determinados. Cada historial financiero es único.
       </p>
       <p>
-        La ley federal permite disputar información inexacta o incompleta directamente con los burós de crédito. Revisa siempre los términos, políticas y condiciones del checkout antes de comprar.
+        La ley federal permite disputar información inexacta o incompleta directamente con los burós de crédito. Revisa siempre los términos, políticas y condiciones antes de registrarte o comprar.
       </p>
       <small>© 2026 Mandy Academy / AMO Management LLC — Las Vegas, Nevada, EE.UU.</small>
     </div>
@@ -193,10 +183,20 @@
 
   <div class="toast" id="checkout-toast" role="status" aria-live="polite" hidden></div>
 
-  <nav class="sticky-cta" aria-label="Acceso rápido a paquetes">
-    <button class="btn btn-primary is-priority-action" type="button" data-scroll-offers>Ver los dos caminos</button>
+  <aside class="social-proof-toast" data-social-proof role="status" aria-live="polite" aria-atomic="true" hidden>
+    <span class="social-proof-icon" data-social-proof-avatar data-tone="academy" aria-hidden="true">7D</span>
+    <div class="social-proof-copy">
+      <strong data-social-proof-title>7 días gratis en Mandy Academy</strong>
+      <p data-social-proof-text>Activa ahora tu acceso gratuito y comienza a aprender por tu cuenta.</p>
+      <small>Oferta disponible ahora</small>
+    </div>
+    <button type="button" data-social-proof-close aria-label="Cerrar notificación de actividad">×</button>
+  </aside>
+
+  <nav class="sticky-cta" aria-label="Agendar asesoría sin costo">
+    <button class="btn btn-primary is-priority-action" type="button" data-checkout-plan="evaluacion" data-offer-destination="promo">Agendar asesoría gratis</button>
   </nav>
 
-  <script src="/js/app.js?v=advisory-first-2"></script>
+  <script src="/js/app.js?v=academy-offer-2"></script>
 </body>
 </html>

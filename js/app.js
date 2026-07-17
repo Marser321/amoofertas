@@ -6,8 +6,13 @@ const OFFER_CONFIG = {
       shortName: "Academy",
       badge: "Hazlo por tu cuenta",
       price: "$49.99/mes",
+      regularPrice: "$49.99/mes",
+      promoPrice: "7 días gratis",
+      promoUrl: "https://www.skool.com/mandy-academy-2249/about?ref=c8c75f0ac6eb46acb608e2b44b952686",
+      promoButtonLabel: "Activar mis 7 días gratis",
+      promoSavingsText: "Entra ahora, prueba la Academia y cancela cuando quieras.",
       description: "Aprende a comprender y trabajar tu crédito por tu cuenta con educación práctica, herramientas en español y acceso a un espacio privado de aprendizaje. Durante la masterclass, comienza con 7 días gratis.",
-      checkoutUrl: "https://app.amomanagements.com/payment-link/6a57c155b1a0a3e48f24d34c",
+      checkoutUrl: "https://www.skool.com/mandy-academy-2249/about?ref=c8c75f0ac6eb46acb608e2b44b952686",
       followUpUrl: "#access-pending-comunidad",
       buttonLabel: "Unirme a Mandy Academy",
       fineprint: "Oferta válida para quienes tomen acción durante la masterclass. Después de los 7 días gratis, la membresía cuesta $49.99 al mes. Puedes cancelar cuando quieras.",
@@ -36,36 +41,35 @@ const OFFER_CONFIG = {
       id: "evaluacion",
       name: "Asesoría personalizada de crédito",
       shortName: "Asesoría",
-      badge: "Opción principal · Con especialista",
-      price: "$100 pago único",
-      description: "Una sesión individual con una especialista para revisar tu situación crediticia, aclarar tus próximos pasos y recibir una cotización directa para tu caso.",
+      badge: "Oferta especial de la masterclass",
+      price: "$100",
+      regularPrice: "US$100",
+      promoPrice: "Gratis",
+      promoUrl: "https://site.amomanagements.com/asesoria-personalizada",
+      promoButtonLabel: "Agendar mi asesoría sin costo",
+      promoSavingsText: "Ahorras US$100 al agendar durante la masterclass.",
+      description: "Una sesión individual con una especialista para revisar tu situación crediticia, aclarar tus próximos pasos y recibir una cotización para tu caso.",
       detailsUrl: "/evaluacion",
-      detailsButtonLabel: "Conocer la asesoría de $100",
+      detailsButtonLabel: "Ver qué incluye la asesoría",
       checkoutUrl: "https://app.amomanagements.com/payment-link/6a57c274b1a0a3e48f24d353",
-      followUpUrl: "#booking-pending-evaluacion",
+      followUpUrl: "https://site.amomanagements.com/asesoria-personalizada",
       buttonLabel: "Comprar mi asesoría por $100",
-      fineprint: "El pago cubre la asesoría y la cotización. No incluye el servicio de reparación de crédito.",
-      promo: {
-        title: "Toma acción durante la masterclass y no pagues los $100",
-        copy: "Quienes tomen acción durante la masterclass reciben esta asesoría personalizada sin costo.",
-        note: "El equipo confirmará tu acceso y enviará un enlace privado con los próximos pasos."
-      },
+      fineprint: "Oferta disponible al agendar durante la masterclass. La asesoría no incluye el servicio de reparación de crédito.",
       featured: true,
       features: [
         "Asesoría personalizada sobre tu situación crediticia",
         "Orientación clara sobre los posibles próximos pasos",
-        "Espacio para explicar tus necesidades y objetivos",
         "Cotización directa del servicio recomendado para tu caso"
       ],
       thankYou: {
         eyebrow: "Asesoría confirmada",
         title: "Ahora elige el horario de tu asesoría personalizada",
-        lede: "Si tu pago de $100 fue aprobado o recibiste el enlace privado del equipo, el siguiente paso es agendar tu cita para revisar tu situación y preparar una cotización.",
+        lede: "Si tu pago de US$100 fue aprobado, el siguiente paso es agendar tu cita y preparar la información que quieras revisar con la especialista.",
         primaryLabel: "Agendar mi asesoría",
-        summaryTitle: "Qué incluye tu pago de $100",
+        summaryTitle: "Qué incluye tu pago de US$100",
         summaryText: "El pago cubre la asesoría personalizada y la preparación de una cotización. No incluye ni garantiza la contratación o el resultado de un servicio de reparación.",
         steps: [
-          ["Guarda tu comprobante", "Conserva el email o recibo del checkout por si necesitas ayuda con tu compra."],
+          ["Guarda tu comprobante", "Conserva el correo o recibo del checkout por si necesitas ayuda con tu compra."],
           ["Elige tu horario", "Usa el botón de agenda y selecciona una de las citas disponibles."],
           ["Prepárate para la asesoría", "Ten a mano la información que quieras revisar y las preguntas importantes sobre tu caso."]
         ]
@@ -91,26 +95,53 @@ const OFFER_CONFIG = {
     {
       label: "Pago",
       comunidad: "7 días gratis; después $49.99 al mes",
-      evaluacion: "$100 una sola vez"
+      evaluacion: "Gratis durante la masterclass (valor US$100)"
     },
     {
       label: "Siguiente paso",
       comunidad: "Entrar a Mandy Academy",
-      evaluacion: "Conocer la asesoría y elegir un horario"
+      evaluacion: "Agendar la asesoría sin costo"
     }
   ],
   trackedParams: ["utm_source", "utm_medium", "utm_campaign", "utm_content", "utm_term", "gclid", "fbclid"]
+};
+
+const SOCIAL_PROOF_CONFIG = {
+  initialDelayMs: 3000,
+  minDelayMs: 8000,
+  maxDelayMs: 12000,
+  visibleMs: 4500,
+  messages: [
+    {
+      avatar: "7D",
+      tone: "academy",
+      title: "7 días gratis en Mandy Academy",
+      text: "Activa ahora tu acceso gratuito y comienza a aprender por tu cuenta."
+    },
+    {
+      avatar: "$0",
+      tone: "advisory",
+      title: "Asesoría gratis en la masterclass",
+      text: "Ve directo a una especialista y agenda tu espacio sin costo."
+    },
+    {
+      avatar: "→",
+      tone: "action",
+      title: "Elige tu próximo paso",
+      text: "Aprende en Academy o aprovecha la asesoría personalizada gratis."
+    }
+  ]
 };
 
 document.addEventListener("DOMContentLoaded", () => {
   renderOffers();
   renderComparison();
   initCheckoutButtons();
-  initScrollButtons();
   initStickyCta();
   initVideoTestimonials();
   initVideoCarousel();
   initThankYouPage();
+  initSocialProof();
 });
 
 function renderOffers() {
@@ -130,24 +161,26 @@ function renderOffers() {
   grid.innerHTML = packages.map(plan => `
     <article class="offer-card${plan.featured ? " is-featured" : ""}" data-offer="${escapeHtml(plan.id)}">
       <span class="offer-badge">${escapeHtml(plan.badge)}</span>
-      <div class="offer-title-row">
+      <div class="offer-title-row${plan.featured ? " is-promotional" : ""}">
         <h3>${escapeHtml(plan.name)}</h3>
-        <div class="offer-price">${escapeHtml(plan.price)}</div>
+        ${plan.promoPrice ? "" : `<div class="offer-price">${escapeHtml(plan.price)}</div>`}
       </div>
       <p class="offer-description">${escapeHtml(plan.description)}</p>
-      ${plan.promo ? `
-        <aside class="offer-promo" aria-label="${escapeHtml(plan.promo.title)}">
-          <strong>${escapeHtml(plan.promo.title)}</strong>
-          <p>${escapeHtml(plan.promo.copy)}</p>
-          <small>${escapeHtml(plan.promo.note)}</small>
-        </aside>
+      ${plan.promoPrice ? `
+        <div class="offer-price-stack${plan.id === "comunidad" ? " is-academy-promo" : ""}" aria-label="${escapeHtml(plan.id === "comunidad" ? `Oferta de ${plan.promoPrice}; después ${plan.regularPrice}` : `Valor regular ${plan.regularPrice}, hoy gratis`)}">
+          <span>${escapeHtml(plan.id === "comunidad" ? "Entra ahora" : "Valor regular")}</span>
+          ${plan.id === "comunidad" ? `<small class="offer-after-price">Después ${escapeHtml(plan.regularPrice)}</small>` : `<del>${escapeHtml(plan.regularPrice)}</del>`}
+          <strong>${plan.id === "comunidad" ? "" : "<small>Hoy:</small> "}${escapeHtml(plan.promoPrice)}</strong>
+          <p>${escapeHtml(plan.promoSavingsText)}</p>
+        </div>
       ` : ""}
       <ul class="offer-features">
         ${plan.features.map(feature => `<li>${escapeHtml(feature)}</li>`).join("")}
       </ul>
-      <button class="btn ${plan.featured ? "btn-primary is-priority-action" : "btn-secondary"}" type="button" data-checkout-plan="${escapeHtml(plan.id)}" data-offer-destination="${escapeHtml(destinationMode)}">
-        ${escapeHtml(destinationMode === "details" && plan.detailsButtonLabel ? plan.detailsButtonLabel : plan.buttonLabel)}
+      <button class="btn ${plan.featured ? "btn-primary is-priority-action" : `btn-secondary${destinationMode === "promo" ? " is-academy-action" : ""}`}" type="button" data-checkout-plan="${escapeHtml(plan.id)}" data-offer-destination="${escapeHtml(destinationMode)}">
+        ${escapeHtml(destinationMode === "promo" && plan.promoButtonLabel ? plan.promoButtonLabel : destinationMode === "details" && plan.detailsButtonLabel ? plan.detailsButtonLabel : plan.buttonLabel)}
       </button>
+      ${destinationMode === "promo" && plan.detailsUrl ? `<button class="offer-detail-link" type="button" data-checkout-plan="${escapeHtml(plan.id)}" data-offer-destination="details">${escapeHtml(plan.detailsButtonLabel)}</button>` : ""}
       <p class="offer-small">${escapeHtml(plan.fineprint)}</p>
     </article>
   `).join("");
@@ -187,6 +220,11 @@ function initCheckoutButtons() {
     if (!plan) return;
 
     const destination = button.getAttribute("data-offer-destination");
+    if (destination === "promo" && plan.promoUrl) {
+      window.location.href = withTrackingParams(plan.promoUrl);
+      return;
+    }
+
     if (destination === "details" && plan.detailsUrl) {
       window.location.href = withTrackingParams(plan.detailsUrl);
       return;
@@ -247,18 +285,9 @@ function setText(selector, value, root = document) {
   if (element) element.textContent = value;
 }
 
-function initScrollButtons() {
-  document.querySelectorAll("[data-scroll-offers]").forEach(button => {
-    button.addEventListener("click", () => {
-      const section = document.getElementById("paquetes");
-      if (section) section.scrollIntoView({ behavior: "smooth", block: "start" });
-    });
-  });
-}
-
 function initStickyCta() {
   const stickyCta = document.querySelector(".sticky-cta");
-  const heroSection = document.querySelector(".hero-section");
+  const heroSection = document.querySelector("[data-sticky-threshold], .hero-section");
   if (!stickyCta || !heroSection) return;
 
   if (!("IntersectionObserver" in window)) {
@@ -275,6 +304,95 @@ function initStickyCta() {
   });
 
   observer.observe(heroSection);
+}
+
+function initSocialProof() {
+  const toast = document.querySelector("[data-social-proof]");
+  if (!toast || !SOCIAL_PROOF_CONFIG.messages.length) return;
+
+  const title = toast.querySelector("[data-social-proof-title]");
+  const text = toast.querySelector("[data-social-proof-text]");
+  const avatar = toast.querySelector("[data-social-proof-avatar]");
+  const close = toast.querySelector("[data-social-proof-close]");
+  let messageIndex = 0;
+  let showTimer;
+  let hideTimer;
+  let paused = false;
+
+  const clearTimers = () => {
+    clearTimeout(showTimer);
+    clearTimeout(hideTimer);
+  };
+
+  const nextDelay = () => Math.round(
+    SOCIAL_PROOF_CONFIG.minDelayMs
+      + Math.random() * (SOCIAL_PROOF_CONFIG.maxDelayMs - SOCIAL_PROOF_CONFIG.minDelayMs)
+  );
+
+  const schedule = delay => {
+    clearTimeout(showTimer);
+    if (paused || document.hidden) return;
+    showTimer = setTimeout(showMessage, delay);
+  };
+
+  const hideMessage = () => {
+    clearTimeout(hideTimer);
+    toast.classList.remove("is-visible");
+    window.setTimeout(() => {
+      if (!toast.classList.contains("is-visible")) toast.hidden = true;
+    }, 350);
+    schedule(nextDelay());
+  };
+
+  function showMessage() {
+    if (paused || document.hidden) return;
+    const message = SOCIAL_PROOF_CONFIG.messages[messageIndex];
+    messageIndex = (messageIndex + 1) % SOCIAL_PROOF_CONFIG.messages.length;
+    if (title) title.textContent = message.title;
+    if (text) text.textContent = message.text;
+    if (avatar) {
+      avatar.textContent = message.avatar;
+      avatar.dataset.tone = message.tone;
+    }
+    toast.hidden = false;
+    window.requestAnimationFrame(() => toast.classList.add("is-visible"));
+    hideTimer = setTimeout(hideMessage, SOCIAL_PROOF_CONFIG.visibleMs);
+  }
+
+  const pause = () => {
+    paused = true;
+    clearTimers();
+  };
+  const resume = () => {
+    paused = false;
+    if (toast.classList.contains("is-visible")) {
+      hideTimer = setTimeout(hideMessage, SOCIAL_PROOF_CONFIG.visibleMs);
+    } else {
+      schedule(nextDelay());
+    }
+  };
+
+  toast.addEventListener("pointerenter", pause);
+  toast.addEventListener("pointerleave", resume);
+  toast.addEventListener("focusin", pause);
+  toast.addEventListener("focusout", event => {
+    if (!toast.contains(event.relatedTarget)) resume();
+  });
+  close?.addEventListener("click", () => {
+    paused = false;
+    hideMessage();
+  });
+  document.addEventListener("visibilitychange", () => {
+    clearTimers();
+    if (document.hidden) {
+      toast.classList.remove("is-visible");
+      toast.hidden = true;
+    } else {
+      schedule(nextDelay());
+    }
+  });
+
+  schedule(SOCIAL_PROOF_CONFIG.initialDelayMs);
 }
 
 function initVideoTestimonials() {

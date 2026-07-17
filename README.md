@@ -1,11 +1,11 @@
 # Amo Ofertas
 
-Sitio estático con dos recorridos de venta que comparten configuración, checkout y página postcompra.
+Sitio estático con dos recorridos que comparten configuración, seguimiento de campañas y páginas de próximos pasos.
 
 ## Rutas
 
 - `/ofertas`: landing principal con dos caminos: Asesoría personalizada de crédito y Mandy Academy.
-- `/evaluacion`: funnel VSL dedicado a la asesoría de $100. La oferta principal de la landing enlaza primero a esta página.
+- `/evaluacion`: detalle VSL de la asesoría personalizada regular de US$100.
 - `/gracias?offer=comunidad`: próximos pasos de la membresía.
 - `/gracias?offer=evaluacion`: agenda posterior a la asesoría.
 
@@ -13,29 +13,36 @@ Vercel redirige la raíz `/` hacia `/ofertas`, publica las páginas HTML sin ext
 
 ## Configuración de ofertas
 
-Precios, beneficios, botones, checkouts y destinos posteriores están centralizados en `OFFER_CONFIG`, dentro de `js/app.js`.
+Precios, beneficios, botones, checkouts y destinos están centralizados en `OFFER_CONFIG`, dentro de `js/app.js`.
 
 Los contenedores con `data-offer-ids` deciden qué tarjetas renderizar:
 
 - `data-offer-ids="evaluacion,comunidad"`: ambas ofertas, con la asesoría primero.
-- `data-offer-ids="evaluacion"`: solo la asesoría.
+- `data-offer-ids="evaluacion"`: solo la asesoría, si vuelve a necesitarse una tarjeta independiente.
 
-En `/ofertas`, `data-offer-action="details"` hace que la tarjeta principal abra `/evaluacion` antes del checkout. Dentro de `/evaluacion`, los botones con `data-checkout-plan="evaluacion"` utilizan la URL de pago de $100. Los parámetros `utm_*`, `gclid` y `fbclid` se conservan al navegar entre ambas páginas, al salir hacia checkout y hacia el destino postcompra.
+En `/ofertas`, `data-offer-action="promo"` hace que la tarjeta principal abra `promoUrl`. Los CTA promocionales estáticos usan `data-offer-destination="promo"`. El enlace secundario abre `/evaluacion` mediante `data-offer-destination="details"`. Los parámetros `utm_*`, `gclid` y `fbclid` se conservan en todos estos destinos.
 
-La promoción de la masterclass pertenece únicamente a la asesoría: quienes tomen acción durante la masterclass reciben un enlace gratuito privado. Ese enlace no se publica ni se configura en este sitio.
+En `/ofertas`, la asesoría es gratuita para quienes agenden durante la masterclass y ahorran su valor regular de US$100. El registro se gestiona en `https://site.amomanagements.com/asesoria-personalizada`. Esta promoción no se muestra dentro de `/evaluacion`, que conserva la oferta regular pagada.
+
+Mandy Academy ofrece 7 días gratis y después cuesta US$49.99 al mes. Su CTA abre `https://www.skool.com/mandy-academy-2249/about?ref=c8c75f0ac6eb46acb608e2b44b952686`.
+
+El checkout pagado de US$100 se conserva en `checkoutUrl` y se utiliza únicamente dentro de `/evaluacion`.
+
+## Notificaciones de actividad
+
+Los mensajes promocionales y sus tiempos se administran en `SOCIAL_PROOF_CONFIG`, dentro de `js/app.js`. Usan avatares gráficos y llamadas a la acción verificables, sin presentar identidades o registros simulados como actividad real.
 
 ## Destinos posteriores pendientes
 
-Reemplazar estos dos placeholders en `OFFER_CONFIG` cuando estén disponibles:
+Reemplazar el siguiente placeholder en `OFFER_CONFIG` cuando esté disponible:
 
 | Oferta | Campo | Placeholder |
 | --- | --- | --- |
 | Mandy Academy | `followUpUrl` | `#access-pending-comunidad` |
-| Asesoría | `followUpUrl` | `#booking-pending-evaluacion` |
 
 Mientras un valor siga siendo placeholder, el botón mostrará un aviso y no abandonará la página.
 
-Configurar los retornos de los checkouts así:
+Configurar los retornos de los checkouts futuros así:
 
 - Mandy Academy: `/gracias?offer=comunidad`
 - Asesoría: `/gracias?offer=evaluacion`
