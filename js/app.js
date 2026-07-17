@@ -4,14 +4,21 @@ const OFFER_CONFIG = {
       id: "comunidad",
       name: "Comunidad Mandy Academy",
       shortName: "Comunidad",
-      badge: "Aprende y conecta",
+      badge: "Oferta de la masterclass",
       price: "$49.99/mes",
-      description: "Un espacio privado en español para aprender con contenido de valor, compartir experiencias y avanzar junto a personas con metas similares.",
+      description: "Un espacio privado en español para aprender con contenido de valor, compartir experiencias y avanzar junto a personas con metas similares. Durante la masterclass, comienza con 7 días gratis.",
       checkoutUrl: "https://app.amomanagements.com/payment-link/6a57c155b1a0a3e48f24d34c",
       followUpUrl: "#access-pending-comunidad",
-      buttonLabel: "Quiero entrar a la comunidad",
-      fineprint: "Membresía con renovación mensual. Puedes cancelar cuando quieras.",
+      buttonLabel: "Quiero aprovechar mis 7 días gratis",
+      fineprint: "Oferta válida para quienes tomen acción durante la masterclass. Después de los 7 días gratis, la membresía cuesta $49.99 al mes. Puedes cancelar cuando quieras.",
+      promo: {
+        title: "Bono limitado para las primeras 5 personas",
+        copy: "Las primeras 5 personas que se unan durante la masterclass recibirán una evaluación personalizada de $100 sin costo.",
+        note: "Sujeto a disponibilidad; el equipo confirmará a las personas elegibles."
+      },
       features: [
+        "7 días gratis al unirte durante la masterclass",
+        "Evaluación personalizada de $100 sin costo para las primeras 5 personas",
         "Contenido educativo de valor en español",
         "Acceso a un espacio privado para miembros",
         "Interacción, apoyo y aprendizaje entre la comunidad",
@@ -23,7 +30,7 @@ const OFFER_CONFIG = {
         lede: "Si tu pago fue aprobado, ya diste el primer paso para aprender, conectar y avanzar junto a nuestra comunidad.",
         primaryLabel: "Acceder a la comunidad",
         summaryTitle: "Tu membresía de $49.99 al mes",
-        summaryText: "La membresía se renueva mensualmente y puedes cancelarla cuando quieras. Revisa tu confirmación de compra para conservar los datos de tu suscripción.",
+        summaryText: "Si te uniste durante la masterclass, tus primeros 7 días son gratis. Después, la membresía se renueva mensualmente y puedes cancelarla cuando quieras. Las primeras 5 personas elegibles también recibirán la evaluación personalizada de $100 sin costo; el equipo les confirmará el beneficio.",
         steps: [
           ["Revisa tu correo", "Busca la confirmación de pago y las instrucciones de acceso. Revisa también spam o promociones."],
           ["Entra al espacio privado", "Usa el botón de acceso cuando el equipo haya habilitado tu entrada a la comunidad."],
@@ -77,12 +84,12 @@ const OFFER_CONFIG = {
     },
     {
       label: "Recibes",
-      comunidad: "Contenido y espacio privado",
+      comunidad: "Contenido, espacio privado y 7 días gratis durante la masterclass",
       evaluacion: "Evaluación y cotización directa"
     },
     {
       label: "Pago",
-      comunidad: "$49.99 cada mes",
+      comunidad: "7 días gratis; después $49.99 al mes",
       evaluacion: "$100 una sola vez"
     },
     {
@@ -136,6 +143,13 @@ function renderOffers() {
         <div class="offer-price">${escapeHtml(plan.price)}</div>
       </div>
       <p class="offer-description">${escapeHtml(plan.description)}</p>
+      ${plan.promo ? `
+        <aside class="offer-promo" aria-label="${escapeHtml(plan.promo.title)}">
+          <strong>${escapeHtml(plan.promo.title)}</strong>
+          <p>${escapeHtml(plan.promo.copy)}</p>
+          <small>${escapeHtml(plan.promo.note)}</small>
+        </aside>
+      ` : ""}
       <ul class="offer-features">
         ${plan.features.map(feature => `<li>${escapeHtml(feature)}</li>`).join("")}
       </ul>

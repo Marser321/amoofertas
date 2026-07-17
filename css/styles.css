@@ -741,6 +741,31 @@ section {
   color: var(--soft);
 }
 
+.offer-promo {
+  display: grid;
+  gap: 0.45rem;
+  padding: 1rem;
+  border: 1px solid rgba(216, 184, 115, 0.42);
+  border-radius: var(--radius-md);
+  background: linear-gradient(135deg, rgba(216, 184, 115, 0.18), rgba(143, 216, 232, 0.08));
+}
+
+.offer-promo strong {
+  color: var(--gold-bright);
+  font-family: var(--font-headings);
+  font-size: 0.95rem;
+}
+
+.offer-promo p {
+  color: var(--text);
+  line-height: 1.45;
+}
+
+.offer-promo small {
+  color: var(--muted);
+  line-height: 1.4;
+}
+
 .offer-features {
   display: grid;
   gap: 0.68rem;
