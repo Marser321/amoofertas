@@ -2,71 +2,72 @@ const OFFER_CONFIG = {
   packages: [
     {
       id: "comunidad",
-      name: "Comunidad Mandy Academy",
-      shortName: "Comunidad",
-      badge: "Oferta de la masterclass",
+      name: "Mandy Academy",
+      shortName: "Academy",
+      badge: "Hazlo por tu cuenta",
       price: "$49.99/mes",
-      description: "Un espacio privado en español para aprender con contenido de valor, compartir experiencias y avanzar junto a personas con metas similares. Durante la masterclass, comienza con 7 días gratis.",
+      description: "Aprende a comprender y trabajar tu crédito por tu cuenta con educación práctica, herramientas en español y acceso a un espacio privado de aprendizaje. Durante la masterclass, comienza con 7 días gratis.",
       checkoutUrl: "https://app.amomanagements.com/payment-link/6a57c155b1a0a3e48f24d34c",
       followUpUrl: "#access-pending-comunidad",
-      buttonLabel: "Quiero aprovechar mis 7 días gratis",
+      buttonLabel: "Unirme a Mandy Academy",
       fineprint: "Oferta válida para quienes tomen acción durante la masterclass. Después de los 7 días gratis, la membresía cuesta $49.99 al mes. Puedes cancelar cuando quieras.",
-      promo: {
-        title: "Bono limitado para las primeras 5 personas",
-        copy: "Las primeras 5 personas que se unan durante la masterclass recibirán una evaluación personalizada de $100 sin costo.",
-        note: "Sujeto a disponibilidad; el equipo confirmará a las personas elegibles."
-      },
       features: [
         "7 días gratis al unirte durante la masterclass",
-        "Evaluación personalizada de $100 sin costo para las primeras 5 personas",
         "Contenido educativo de valor en español",
-        "Acceso a un espacio privado para miembros",
-        "Interacción, apoyo y aprendizaje entre la comunidad",
+        "Acceso a un espacio privado de aprendizaje",
+        "Interacción y apoyo entre estudiantes",
         "Nuevas herramientas para tomar decisiones informadas"
       ],
       thankYou: {
-        eyebrow: "Bienvenido a la comunidad",
-        title: "Tu lugar en la Comunidad Mandy Academy está listo",
-        lede: "Si tu pago fue aprobado, ya diste el primer paso para aprender, conectar y avanzar junto a nuestra comunidad.",
-        primaryLabel: "Acceder a la comunidad",
+        eyebrow: "Te damos la bienvenida a Mandy Academy",
+        title: "Tu lugar en Mandy Academy está listo",
+        lede: "Si tu pago fue aprobado, ya diste el primer paso para aprender, conectar y avanzar dentro de la Academia.",
+        primaryLabel: "Acceder a Mandy Academy",
         summaryTitle: "Tu membresía de $49.99 al mes",
-        summaryText: "Si te uniste durante la masterclass, tus primeros 7 días son gratis. Después, la membresía se renueva mensualmente y puedes cancelarla cuando quieras. Las primeras 5 personas elegibles también recibirán la evaluación personalizada de $100 sin costo; el equipo les confirmará el beneficio.",
+        summaryText: "Si te uniste durante la masterclass, tus primeros 7 días son gratis. Después, la membresía se renueva mensualmente y puedes cancelarla cuando quieras.",
         steps: [
           ["Revisa tu correo", "Busca la confirmación de pago y las instrucciones de acceso. Revisa también spam o promociones."],
-          ["Entra al espacio privado", "Usa el botón de acceso cuando el equipo haya habilitado tu entrada a la comunidad."],
-          ["Preséntate y participa", "Conecta con otros miembros, explora el contenido y comienza a crear nuevas sinergias."]
+          ["Entra a la Academia", "Usa el botón de acceso cuando el equipo haya habilitado tu entrada a Mandy Academy."],
+          ["Comienza a aprender", "Explora el contenido, participa y aplica las herramientas a tu propio proceso."]
         ]
       }
     },
     {
       id: "evaluacion",
-      name: "Evaluación personalizada",
-      shortName: "Evaluación",
-      badge: "Atención individual",
+      name: "Asesoría personalizada de crédito",
+      shortName: "Asesoría",
+      badge: "Opción principal · Con especialista",
       price: "$100 pago único",
-      description: "Una evaluación individual para revisar tu situación crediticia, aclarar tus próximos pasos y recibir una cotización directa.",
+      description: "Una sesión individual con una especialista para revisar tu situación crediticia, aclarar tus próximos pasos y recibir una cotización directa para tu caso.",
+      detailsUrl: "/evaluacion",
+      detailsButtonLabel: "Conocer la asesoría de $100",
       checkoutUrl: "https://app.amomanagements.com/payment-link/6a57c274b1a0a3e48f24d353",
       followUpUrl: "#booking-pending-evaluacion",
-      buttonLabel: "Comprar mi evaluación por $100",
-      fineprint: "El pago cubre la evaluación y la cotización. No incluye el servicio de reparación de crédito.",
+      buttonLabel: "Comprar mi asesoría por $100",
+      fineprint: "El pago cubre la asesoría y la cotización. No incluye el servicio de reparación de crédito.",
+      promo: {
+        title: "Toma acción durante la masterclass y no pagues los $100",
+        copy: "Quienes tomen acción durante la masterclass reciben esta asesoría personalizada sin costo.",
+        note: "El equipo confirmará tu acceso y enviará un enlace privado con los próximos pasos."
+      },
       featured: true,
       features: [
-        "Evaluación personalizada de tu situación crediticia",
+        "Asesoría personalizada sobre tu situación crediticia",
         "Orientación clara sobre los posibles próximos pasos",
         "Espacio para explicar tus necesidades y objetivos",
         "Cotización directa del servicio recomendado para tu caso"
       ],
       thankYou: {
-        eyebrow: "Evaluación confirmada",
-        title: "Ahora elige el horario de tu evaluación personalizada",
-        lede: "Si tu pago de $100 fue aprobado, el siguiente paso es agendar tu cita para que podamos conocer tu situación y preparar una cotización.",
-        primaryLabel: "Agendar mi evaluación",
+        eyebrow: "Asesoría confirmada",
+        title: "Ahora elige el horario de tu asesoría personalizada",
+        lede: "Si tu pago de $100 fue aprobado o recibiste el enlace privado del equipo, el siguiente paso es agendar tu cita para revisar tu situación y preparar una cotización.",
+        primaryLabel: "Agendar mi asesoría",
         summaryTitle: "Qué incluye tu pago de $100",
-        summaryText: "El pago cubre la evaluación personalizada y la preparación de una cotización. No incluye ni garantiza la contratación o el resultado de un servicio de reparación.",
+        summaryText: "El pago cubre la asesoría personalizada y la preparación de una cotización. No incluye ni garantiza la contratación o el resultado de un servicio de reparación.",
         steps: [
           ["Guarda tu comprobante", "Conserva el email o recibo del checkout por si necesitas ayuda con tu compra."],
           ["Elige tu horario", "Usa el botón de agenda y selecciona una de las citas disponibles."],
-          ["Prepárate para la evaluación", "Ten a mano la información que quieras revisar y las preguntas importantes sobre tu caso."]
+          ["Prepárate para la asesoría", "Ten a mano la información que quieras revisar y las preguntas importantes sobre tu caso."]
         ]
       }
     }
@@ -74,18 +75,18 @@ const OFFER_CONFIG = {
   comparison: [
     {
       label: "Objetivo",
-      comunidad: "Aprender y crecer acompañado",
-      evaluacion: "Revisar tu situación individual"
+      comunidad: "Aprender y avanzar por tu cuenta",
+      evaluacion: "Revisar tu situación con una especialista"
     },
     {
       label: "Ideal para",
-      comunidad: "Quien busca educación continua y conexión",
+      comunidad: "Quien quiere aprender con herramientas y contenido",
       evaluacion: "Quien necesita orientación personalizada"
     },
     {
       label: "Recibes",
-      comunidad: "Contenido, espacio privado y 7 días gratis durante la masterclass",
-      evaluacion: "Evaluación y cotización directa"
+      comunidad: "Contenido, herramientas y 7 días gratis durante la masterclass",
+      evaluacion: "Asesoría individual y cotización directa"
     },
     {
       label: "Pago",
@@ -94,19 +95,11 @@ const OFFER_CONFIG = {
     },
     {
       label: "Siguiente paso",
-      comunidad: "Acceder a la comunidad",
-      evaluacion: "Elegir un horario disponible"
+      comunidad: "Entrar a Mandy Academy",
+      evaluacion: "Conocer la asesoría y elegir un horario"
     }
   ],
   trackedParams: ["utm_source", "utm_medium", "utm_campaign", "utm_content", "utm_term", "gclid", "fbclid"]
-};
-
-const OFFERS_HERO_CONFIG = {
-  posterDesktop: "/assets/hero-banner-dos-caminos.webp",
-  posterMobile: "/assets/hero-banner-dos-caminos.webp",
-  videoDesktop: "",
-  videoMobile: "",
-  alt: "Amanda Olmo presenta dos caminos para avanzar con el crédito"
 };
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -115,10 +108,8 @@ document.addEventListener("DOMContentLoaded", () => {
   initCheckoutButtons();
   initScrollButtons();
   initStickyCta();
-  initAccordion();
   initVideoTestimonials();
   initVideoCarousel();
-  initOffersHero();
   initThankYouPage();
 });
 
@@ -131,8 +122,9 @@ function renderOffers() {
     .map(id => id.trim())
     .filter(Boolean);
   const packages = requestedIds.length
-    ? OFFER_CONFIG.packages.filter(plan => requestedIds.includes(plan.id))
+    ? requestedIds.map(id => OFFER_CONFIG.packages.find(plan => plan.id === id)).filter(Boolean)
     : OFFER_CONFIG.packages;
+  const destinationMode = grid.dataset.offerAction || "checkout";
 
   grid.classList.toggle("is-single", packages.length === 1);
   grid.innerHTML = packages.map(plan => `
@@ -153,8 +145,8 @@ function renderOffers() {
       <ul class="offer-features">
         ${plan.features.map(feature => `<li>${escapeHtml(feature)}</li>`).join("")}
       </ul>
-      <button class="btn btn-primary" type="button" data-checkout-plan="${escapeHtml(plan.id)}">
-        ${escapeHtml(plan.buttonLabel)}
+      <button class="btn ${plan.featured ? "btn-primary is-priority-action" : "btn-secondary"}" type="button" data-checkout-plan="${escapeHtml(plan.id)}" data-offer-destination="${escapeHtml(destinationMode)}">
+        ${escapeHtml(destinationMode === "details" && plan.detailsButtonLabel ? plan.detailsButtonLabel : plan.buttonLabel)}
       </button>
       <p class="offer-small">${escapeHtml(plan.fineprint)}</p>
     </article>
@@ -165,17 +157,21 @@ function renderComparison() {
   const card = document.getElementById("comparison-card");
   if (!card) return;
 
+  const academy = OFFER_CONFIG.packages.find(plan => plan.id === "comunidad");
+  const advisory = OFFER_CONFIG.packages.find(plan => plan.id === "evaluacion");
+  if (!academy || !advisory) return;
+
   card.innerHTML = `
     <div class="comparison-row is-head">
       <strong>Detalle</strong>
-      <strong>${escapeHtml(OFFER_CONFIG.packages[0].shortName)}</strong>
-      <strong>${escapeHtml(OFFER_CONFIG.packages[1].shortName)}</strong>
+      <strong>${escapeHtml(advisory.shortName)}</strong>
+      <strong>${escapeHtml(academy.shortName)}</strong>
     </div>
     ${OFFER_CONFIG.comparison.map(row => `
       <div class="comparison-row">
         <strong>${escapeHtml(row.label)}</strong>
-        <span data-label="${escapeHtml(OFFER_CONFIG.packages[0].shortName)}">${escapeHtml(row.comunidad)}</span>
-        <span data-label="${escapeHtml(OFFER_CONFIG.packages[1].shortName)}">${escapeHtml(row.evaluacion)}</span>
+        <span data-label="${escapeHtml(advisory.shortName)}">${escapeHtml(row.evaluacion)}</span>
+        <span data-label="${escapeHtml(academy.shortName)}">${escapeHtml(row.comunidad)}</span>
       </div>
     `).join("")}
   `;
@@ -189,6 +185,12 @@ function initCheckoutButtons() {
     const planId = button.getAttribute("data-checkout-plan");
     const plan = OFFER_CONFIG.packages.find(item => item.id === planId);
     if (!plan) return;
+
+    const destination = button.getAttribute("data-offer-destination");
+    if (destination === "details" && plan.detailsUrl) {
+      window.location.href = withTrackingParams(plan.detailsUrl);
+      return;
+    }
 
     if (isPlaceholderCheckout(plan.checkoutUrl)) {
       showToast(`El checkout de ${plan.name} está en preparación. Muy pronto podrás completar tu compra desde este botón.`);
@@ -222,7 +224,7 @@ function initThankYouPage() {
     primaryButton.hidden = false;
     primaryButton.addEventListener("click", () => {
       if (isPlaceholderCheckout(plan.followUpUrl)) {
-        const pendingAction = plan.id === "comunidad" ? "El acceso a la comunidad" : "La agenda de evaluaciones";
+        const pendingAction = plan.id === "comunidad" ? "El acceso a Mandy Academy" : "La agenda de asesorías";
         showToast(`${pendingAction} está en preparación. Revisa tu correo o contacta a soporte para recibir ayuda.`);
         return;
       }
@@ -275,20 +277,6 @@ function initStickyCta() {
   observer.observe(heroSection);
 }
 
-function initAccordion() {
-  document.querySelectorAll(".accordion-trigger").forEach(trigger => {
-    trigger.addEventListener("click", () => {
-      const isExpanded = trigger.getAttribute("aria-expanded") === "true";
-
-      document.querySelectorAll(".accordion-trigger").forEach(otherTrigger => {
-        if (otherTrigger !== trigger) otherTrigger.setAttribute("aria-expanded", "false");
-      });
-
-      trigger.setAttribute("aria-expanded", String(!isExpanded));
-    });
-  });
-}
-
 function initVideoTestimonials() {
   const videos = Array.from(document.querySelectorAll("[data-testimonial-video]"));
   if (!videos.length) return;
@@ -330,56 +318,6 @@ function initVideoCarousel() {
 
   prevButton.addEventListener("click", () => scrollByCard(-1));
   nextButton.addEventListener("click", () => scrollByCard(1));
-}
-
-function initOffersHero() {
-  const root = document.querySelector("[data-offers-hero]");
-  if (!root) return;
-
-  const picture = root.querySelector("[data-offers-hero-picture]");
-  const mobileSource = root.querySelector("[data-offers-hero-mobile]");
-  const image = root.querySelector("[data-offers-hero-image]");
-  const video = root.querySelector("[data-offers-hero-video]");
-  if (!picture || !image || !video) return;
-
-  image.src = OFFERS_HERO_CONFIG.posterDesktop;
-  image.alt = OFFERS_HERO_CONFIG.alt;
-  if (mobileSource) mobileSource.srcset = OFFERS_HERO_CONFIG.posterMobile || OFFERS_HERO_CONFIG.posterDesktop;
-
-  const reduceMotion = window.matchMedia?.("(prefers-reduced-motion: reduce)").matches;
-  const hasAnimatedHero = Boolean(OFFERS_HERO_CONFIG.videoDesktop || OFFERS_HERO_CONFIG.videoMobile);
-  if (reduceMotion || !hasAnimatedHero) return;
-
-  const sources = [
-    OFFERS_HERO_CONFIG.videoMobile
-      ? { src: OFFERS_HERO_CONFIG.videoMobile, media: "(max-width: 680px)" }
-      : null,
-    OFFERS_HERO_CONFIG.videoDesktop
-      ? { src: OFFERS_HERO_CONFIG.videoDesktop, media: "" }
-      : null
-  ].filter(Boolean);
-
-  sources.forEach(sourceConfig => {
-    const source = document.createElement("source");
-    source.src = sourceConfig.src;
-    source.type = "video/mp4";
-    if (sourceConfig.media) source.media = sourceConfig.media;
-    video.appendChild(source);
-  });
-
-  video.poster = OFFERS_HERO_CONFIG.posterDesktop;
-  video.hidden = false;
-  video.muted = true;
-  video.addEventListener("playing", () => root.classList.add("is-video-ready"), { once: true });
-  video.addEventListener("error", () => {
-    video.hidden = true;
-    root.classList.remove("is-video-ready");
-  });
-  video.load();
-  video.play().catch(() => {
-    video.hidden = true;
-    root.classList.remove("is-video-ready");
-  });
 }
 
 function isPlaceholderCheckout(url) {
