@@ -113,22 +113,25 @@ const SOCIAL_PROOF_CONFIG = {
   visibleMs: 4500,
   messages: [
     {
-      avatar: "7D",
-      tone: "academy",
-      title: "7 días gratis en Mandy Academy",
-      text: "Activa ahora tu acceso gratuito y comienza a aprender por tu cuenta."
-    },
-    {
-      avatar: "$0",
+      avatar: "IV",
       tone: "advisory",
-      title: "Asesoría gratis en la masterclass",
-      text: "Ve directo a una especialista y agenda tu espacio sin costo."
+      title: "Iván elige ir directo",
+      text: "En este ejemplo, agenda su asesoría personalizada gratis durante la masterclass.",
+      meta: "Persona ilustrativa · Ruta Asesoría"
     },
     {
-      avatar: "→",
+      avatar: "PD",
+      tone: "academy",
+      title: "Pedro quiere aprender por su cuenta",
+      text: "En este ejemplo, activa sus 7 días gratis dentro de Mandy Academy.",
+      meta: "Persona ilustrativa · Ruta Academy"
+    },
+    {
+      avatar: "LA",
       tone: "action",
-      title: "Elige tu próximo paso",
-      text: "Aprende en Academy o aprovecha la asesoría personalizada gratis."
+      title: "Laura toma acción ahora",
+      text: "En este ejemplo, reserva una asesoría gratis para recibir orientación personalizada.",
+      meta: "Persona ilustrativa · Ruta Asesoría"
     }
   ]
 };
@@ -313,6 +316,7 @@ function initSocialProof() {
   const title = toast.querySelector("[data-social-proof-title]");
   const text = toast.querySelector("[data-social-proof-text]");
   const avatar = toast.querySelector("[data-social-proof-avatar]");
+  const meta = toast.querySelector("[data-social-proof-meta]");
   const close = toast.querySelector("[data-social-proof-close]");
   let messageIndex = 0;
   let showTimer;
@@ -350,6 +354,7 @@ function initSocialProof() {
     messageIndex = (messageIndex + 1) % SOCIAL_PROOF_CONFIG.messages.length;
     if (title) title.textContent = message.title;
     if (text) text.textContent = message.text;
+    if (meta) meta.textContent = message.meta;
     if (avatar) {
       avatar.textContent = message.avatar;
       avatar.dataset.tone = message.tone;

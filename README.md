@@ -30,7 +30,7 @@ El checkout pagado de US$100 se conserva en `checkoutUrl` y se utiliza únicamen
 
 ## Notificaciones de actividad
 
-Los mensajes promocionales y sus tiempos se administran en `SOCIAL_PROOF_CONFIG`, dentro de `js/app.js`. Usan avatares gráficos y llamadas a la acción verificables, sin presentar identidades o registros simulados como actividad real.
+Los mensajes promocionales y sus tiempos se administran en `SOCIAL_PROOF_CONFIG`, dentro de `js/app.js`. Usan nombres, iniciales y rutas ilustrativas claramente identificadas como ejemplos; no presentan identidades o registros simulados como actividad real.
 
 ## Destinos posteriores pendientes
 
