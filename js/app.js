@@ -13,7 +13,7 @@ const OFFER_CONFIG = {
       promoSavingsText: "Entra ahora, prueba la Academia y cancela cuando quieras.",
       description: "Aprende a comprender y trabajar tu crédito por tu cuenta con educación práctica, herramientas en español y acceso a un espacio privado de aprendizaje. Durante la masterclass, comienza con 7 días gratis.",
       checkoutUrl: "https://www.skool.com/mandy-academy-2249/about?ref=c8c75f0ac6eb46acb608e2b44b952686",
-      followUpUrl: "#access-pending-comunidad",
+      followUpUrl: "https://www.skool.com/mandy-academy-2249/about?ref=c8c75f0ac6eb46acb608e2b44b952686",
       buttonLabel: "Unirme a Mandy Academy",
       fineprint: "Oferta válida para quienes tomen acción durante la masterclass. Después de los 7 días gratis, la membresía cuesta $49.99 al mes. Puedes cancelar cuando quieras.",
       features: [
