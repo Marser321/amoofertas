@@ -111,27 +111,54 @@ const SOCIAL_PROOF_CONFIG = {
   minDelayMs: 8000,
   maxDelayMs: 12000,
   visibleMs: 4500,
-  messages: [
+  minMinutesAgo: 2,
+  maxMinutesAgo: 28,
+  names: [
+    "Valentina R.",
+    "Martín G.",
+    "Sofía L.",
+    "Sebastián P.",
+    "Camila F.",
+    "Federico M.",
+    "Lucía A.",
+    "Diego C.",
+    "Agustina S.",
+    "Nicolás B.",
+    "Carolina V.",
+    "Matías H.",
+    "Paula D.",
+    "Rodrigo T.",
+    "Micaela N.",
+    "Gonzalo Q.",
+    "Natalia J.",
+    "Bruno E.",
+    "Florencia O.",
+    "Andrés K."
+  ],
+  actions: [
     {
-      avatar: "IV",
-      tone: "advisory",
-      title: "Iván elige ir directo",
-      text: "En este ejemplo, agenda su asesoría personalizada gratis durante la masterclass.",
-      meta: "Persona ilustrativa · Ruta Asesoría"
-    },
-    {
-      avatar: "PD",
-      tone: "academy",
-      title: "Pedro quiere aprender por su cuenta",
-      text: "En este ejemplo, activa sus 7 días gratis dentro de Mandy Academy.",
-      meta: "Persona ilustrativa · Ruta Academy"
-    },
-    {
-      avatar: "LA",
       tone: "action",
-      title: "Laura toma acción ahora",
-      text: "En este ejemplo, reserva una asesoría gratis para recibir orientación personalizada.",
-      meta: "Persona ilustrativa · Ruta Asesoría"
+      title: "se registró en la masterclass",
+      text: "Acaba de asegurar su lugar para la próxima masterclass en vivo.",
+      route: "Masterclass"
+    },
+    {
+      tone: "advisory",
+      title: "agendó su asesoría gratis",
+      text: "Reservó su asesoría personalizada sin costo con el equipo.",
+      route: "Ruta Asesoría"
+    },
+    {
+      tone: "academy",
+      title: "activó sus 7 días gratis",
+      text: "Comenzó su prueba gratuita dentro de Mandy Academy.",
+      route: "Ruta Academy"
+    },
+    {
+      tone: "action",
+      title: "se sumó a la comunidad",
+      text: "Se unió a la comunidad para acompañar la masterclass.",
+      route: "Comunidad"
     }
   ]
 };
@@ -311,17 +338,48 @@ function initStickyCta() {
 
 function initSocialProof() {
   const toast = document.querySelector("[data-social-proof]");
-  if (!toast || !SOCIAL_PROOF_CONFIG.messages.length) return;
+  if (!toast || !SOCIAL_PROOF_CONFIG.names.length || !SOCIAL_PROOF_CONFIG.actions.length) return;
 
   const title = toast.querySelector("[data-social-proof-title]");
   const text = toast.querySelector("[data-social-proof-text]");
   const avatar = toast.querySelector("[data-social-proof-avatar]");
   const meta = toast.querySelector("[data-social-proof-meta]");
   const close = toast.querySelector("[data-social-proof-close]");
-  let messageIndex = 0;
+  let lastNameIndex = -1;
+  let actionIndex = Math.floor(Math.random() * SOCIAL_PROOF_CONFIG.actions.length);
   let showTimer;
   let hideTimer;
   let paused = false;
+
+  const buildMessage = () => {
+    const { names, actions, minMinutesAgo, maxMinutesAgo } = SOCIAL_PROOF_CONFIG;
+    let nameIndex;
+    do {
+      nameIndex = Math.floor(Math.random() * names.length);
+    } while (names.length > 1 && nameIndex === lastNameIndex);
+    lastNameIndex = nameIndex;
+
+    const name = names[nameIndex];
+    const action = actions[actionIndex % actions.length];
+    actionIndex += 1;
+
+    const minutes = minMinutesAgo + Math.floor(Math.random() * (maxMinutesAgo - minMinutesAgo + 1));
+    const initials = name
+      .split(/\s+/)
+      .map(part => part.charAt(0))
+      .join("")
+      .slice(0, 2)
+      .toUpperCase();
+    const firstName = name.split(" ")[0];
+
+    return {
+      avatar: initials,
+      tone: action.tone,
+      title: `${firstName} ${action.title}`,
+      text: action.text,
+      meta: `Hace ${minutes} min · ${action.route}`
+    };
+  };
 
   const clearTimers = () => {
     clearTimeout(showTimer);
@@ -350,8 +408,7 @@ function initSocialProof() {
 
   function showMessage() {
     if (paused || document.hidden) return;
-    const message = SOCIAL_PROOF_CONFIG.messages[messageIndex];
-    messageIndex = (messageIndex + 1) % SOCIAL_PROOF_CONFIG.messages.length;
+    const message = buildMessage();
     if (title) title.textContent = message.title;
     if (text) text.textContent = message.text;
     if (meta) meta.textContent = message.meta;
