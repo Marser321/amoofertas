@@ -49,8 +49,6 @@ const OFFER_CONFIG = {
       promoButtonLabel: "Agendar mi asesoría sin costo",
       promoSavingsText: "Ahorras US$100 al agendar durante la masterclass.",
       description: "Una sesión individual con una especialista para revisar tu situación crediticia, aclarar tus próximos pasos y recibir una cotización para tu caso.",
-      detailsUrl: "/evaluacion",
-      detailsButtonLabel: "Ver qué incluye la asesoría",
       checkoutUrl: "https://app.amomanagements.com/payment-link/6a57c274b1a0a3e48f24d353",
       followUpUrl: "https://site.amomanagements.com/asesoria-personalizada",
       buttonLabel: "Comprar mi asesoría por $100",
