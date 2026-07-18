@@ -249,12 +249,12 @@ function initCheckoutButtons() {
 
     const destination = button.getAttribute("data-offer-destination");
     if (destination === "promo" && plan.promoUrl) {
-      window.location.href = withTrackingParams(plan.promoUrl);
+      redirectTo(plan.promoUrl);
       return;
     }
 
     if (destination === "details" && plan.detailsUrl) {
-      window.location.href = withTrackingParams(plan.detailsUrl);
+      redirectTo(plan.detailsUrl);
       return;
     }
 
@@ -263,7 +263,7 @@ function initCheckoutButtons() {
       return;
     }
 
-    window.location.href = withTrackingParams(plan.checkoutUrl);
+    redirectTo(plan.checkoutUrl);
   });
 }
 
@@ -295,7 +295,7 @@ function initThankYouPage() {
         return;
       }
 
-      window.location.href = withTrackingParams(plan.followUpUrl);
+      redirectTo(plan.followUpUrl);
     });
   }
 
@@ -502,6 +502,22 @@ function isPlaceholderCheckout(url) {
   if (!url || typeof url !== "string") return true;
   const value = url.trim();
   return !value || value.startsWith("#") || value.includes("checkout-pending") || value.includes("REPLACE_WITH");
+}
+
+function redirectTo(rawUrl) {
+  const target = withTrackingParams(rawUrl);
+
+  if (window.top !== window.self) {
+    try {
+      window.top.location.href = target;
+      return;
+    } catch (error) {
+      const opened = window.open(target, "_blank", "noopener");
+      if (opened) return;
+    }
+  }
+
+  window.location.href = target;
 }
 
 function withTrackingParams(rawUrl) {
