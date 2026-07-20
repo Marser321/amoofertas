@@ -22,11 +22,11 @@ Los contenedores con `data-offer-ids` deciden qué tarjetas renderizar:
 
 En `/ofertas`, `data-offer-action="promo"` hace que la tarjeta principal abra `promoUrl`. Los CTA promocionales estáticos usan `data-offer-destination="promo"`. El enlace secundario abre `/evaluacion` mediante `data-offer-destination="details"`. Los parámetros `utm_*`, `gclid` y `fbclid` se conservan en todos estos destinos.
 
-En `/ofertas`, la asesoría es gratuita para quienes agenden durante la masterclass y ahorran su valor regular de US$100. El registro se gestiona en `https://site.amomanagements.com/asesoria-personalizada`. Esta promoción no se muestra dentro de `/evaluacion`, que conserva la oferta regular pagada.
+En `/ofertas`, la asesoría es gratuita para quienes agenden durante la masterclass y ahorran su valor regular de US$100. El registro se gestiona en `https://site.amomanagements.com/asesoria-personalizada`. `/evaluacion` conserva su contenido y precio regular, pero sus CTA abren directamente esta misma agenda mediante `promoUrl`.
 
 Mandy Academy ofrece 7 días gratis y después cuesta US$49.99 al mes. Su CTA abre `https://www.skool.com/mandy-academy-2249/about?ref=c8c75f0ac6eb46acb608e2b44b952686`.
 
-El checkout pagado de US$100 se conserva en `checkoutUrl` y se utiliza únicamente dentro de `/evaluacion`.
+El checkout pagado de US$100 se conserva en `checkoutUrl` para una posible reutilización futura, pero los recorridos actuales de la asesoría abren `promoUrl`.
 
 ## Notificaciones de actividad
 
